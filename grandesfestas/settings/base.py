@@ -1,11 +1,16 @@
 import sys
 from os.path import join, abspath, dirname
 
-# PATH vars
 
-here = lambda *x: join(abspath(dirname(__file__)), *x)
+# PATH vars
+def here(*x):
+    return join(abspath(dirname(__file__)), *x)
+
+
+def root(*x):
+    return join(abspath(PROJECT_ROOT), *x)
+
 PROJECT_ROOT = here("..")
-root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 
 sys.path.insert(0, root('apps'))
 
@@ -27,13 +32,15 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'rest_framework',
 )
 
 PROJECT_APPS = (
     'volunteers',
     'trainings',
     'subscriptions',
+    'apiv1',
 )
 
 INSTALLED_APPS += PROJECT_APPS

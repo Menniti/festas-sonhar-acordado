@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -23,9 +24,6 @@ class TrainingLocal(BaseModel):
     lat = models.FloatField(_('Latitude'), default=0)
     lon = models.FloatField(_('Longitude'), default=0)
 
-    def __unicode__(self):
-        return self.name
-
     def __str__(self):
         return self.name
 
@@ -38,6 +36,10 @@ class Training(BaseModel):
     """ Represents a Training session """
     local = models.ForeignKey(TrainingLocal, verbose_name=_('Local'))
     date = models.DateTimeField(_('Date'), )
+
+    def __str__(self):
+        date = timezone.localtime(self.date)
+        return '%s, %s' % (self.local.name, date.strftime('%d/%m/%Y, %H:%M, %Z'))
 
     class Meta:
         verbose_name = _('Training')

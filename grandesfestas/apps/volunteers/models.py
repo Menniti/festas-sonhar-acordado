@@ -21,7 +21,7 @@ class Volunteer(models.Model):
     # address
     cep = models.CharField(_('Cep'), max_length=9)
     address = models.CharField(_('Address'), max_length=128)
-    complement = models.CharField(_('Complement'), max_length=32)
+    complement = models.CharField(_('Complement'), max_length=32, blank=True)
     state = models.CharField(_('State'), max_length=32)
     city = models.CharField(_('City'), max_length=32)
 

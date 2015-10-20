@@ -4,6 +4,8 @@ from apiv1 import views
 
 router = routers.DefaultRouter()
 router.register(r'trainings', views.TrainingViewSet)
+router.register(r'subscriptions', views.SubscriptionViewSet)
+router.register(r'volunteers', views.VolunteerViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

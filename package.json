@@ -1,0 +1,16 @@
+{
+  "name": "festasonhar",
+  "version": "1.0.0",
+  "description": "Sistema de inscrição para festa de natal do Sonhar Acordado",
+  "scripts": {
+    "start": "/usr/bin/env python manage.py runserver",
+    "test": "/usr/bin/env python manage.py test"
+  },
+  "author": "ONG Sonhar Acordado São Paulo",
+  "dependencies": {
+    "bower": "^1.6.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.4.2"
+  }
+}

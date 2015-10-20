@@ -1,0 +1,15 @@
+{
+  "name": "festasonhar",
+  "description": "Sistema de inscrição para festa de natal do Sonhar Acordado",
+  "authors": [
+    "ONG Sonhar Acordado São Paulo"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-resource": "~1.4.7",
+    "bootstrap": "~3.3.5"
+  }
+}

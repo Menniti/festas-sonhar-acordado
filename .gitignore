@@ -66,6 +66,7 @@ grandesfestas/static/
 
 # node
 node_modules/
+bower_components/
 
 # bower packages
 grandesfestas/assets-src/vendor/

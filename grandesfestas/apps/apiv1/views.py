@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from rest_framework import filters
 from rest_framework import viewsets
 
 from trainings.models import Training
@@ -23,3 +24,5 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
 class VolunteerViewSet(viewsets.ModelViewSet):
     queryset = Volunteer.objects.all()
     serializer_class = VolunteerSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('email',)

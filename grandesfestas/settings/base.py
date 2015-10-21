@@ -33,10 +33,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dynamic_preferences',
     'rest_framework',
 )
 
 PROJECT_APPS = (
+    'preferences',
     'volunteers',
     'trainings',
     'subscriptions',
@@ -54,6 +56,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.debug',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.media',
+    'django.template.context_processors.static',
+    'django.template.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+    'dynamic_preferences.processors.global_preferences'
+)
+
 
 ROOT_URLCONF = 'grandesfestas.urls'
 

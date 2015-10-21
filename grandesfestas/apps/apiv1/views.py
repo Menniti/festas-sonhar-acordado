@@ -19,6 +19,8 @@ class TrainingViewSet(viewsets.ModelViewSet):
 class SubscriptionViewSet(viewsets.ModelViewSet):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('volunteer',)
 
 
 class VolunteerViewSet(viewsets.ModelViewSet):

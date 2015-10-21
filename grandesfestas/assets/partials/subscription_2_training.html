@@ -1,18 +1,16 @@
 <form>
     <div ng-repeat="training in training_list">
-        <span>name</span>
-        <p ng-bind="training.local.name"></p>
-        <span>date</span>
-        <p ng-bind="training.date"></p>
-        <span>cep</span>
-        <p ng-bind="training.local.cep"></p>
-        <span>address</span>
-        <p ng-bind="training.local.address"></p>
-        <span>complement</span>
-        <p ng-bind="training.local.complement"></p>
-        <span>state</span>
-        <p ng-bind="training.local.state"></p>
-        <span>city</span>
-        <p ng-bind="training.local.city"></p>
+        <label>
+            <input type="radio"
+                   ng-value="training.id"
+                   ng-model="subscription.training" />
+
+            <span>{{ training.local.name }}</span><br/>
+            <span>{{ training.local.address }} - {{ training.local.city }}</span><br/>
+            <span>{{ training.date }}</span>
+
+        </label>
     </div>
+    <button ng-click="save()">Próximo</button>
 </form>
+{{ subscription }}

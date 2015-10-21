@@ -9,35 +9,22 @@
         }
     ]);
 
-    app.factory('Subscription', ['$resource',
-        function($resource){
-            return $resource(
-                '/apiv1/subscriptions/:id',
-                {'id': '@id'},
-                {'update': {'method': 'PUT'}}
-            );
-        }
-    ]);
+    function drf_resource_setup(url) {
+        return function($resource){
+            var Entity = $resource(url, {'id': '@id'}, {'update': {'method': 'PUT'}});
 
-    app.factory('Volunteer', ['$resource',
-        function($resource){
-            return $resource(
-                '/apiv1/volunteers/:id',
-                {'id': '@id'},
-                {'update': {'method': 'PUT'}}
-            );
-        }
-    ]);
+            Entity.prototype.save = function() {
+                // DRF create with POST and update with PUT
+                return this.id ? this.$update() : this.$save();
+            };
 
-    app.factory('Training', ['$resource',
-        function($resource){
-            return $resource(
-                '/apiv1/trainings/:id',
-                {'id': '@id'},
-                {'update': {'method': 'PUT'}}
-            );
-        }
-    ]);
+            return Entity;
+        };
+    }
+
+    app.factory('Subscription', ['$resource', drf_resource_setup('/apiv1/subscriptions/:id')]);
+    app.factory('Volunteer', ['$resource', drf_resource_setup('/apiv1/volunteers/:id')]);
+    app.factory('Training', ['$resource', drf_resource_setup('/apiv1/trainings/:id')]);
 
     app.service('cepcoder', ['$q', '$http', function($q, $http){
         this.code = function(cep) {

@@ -1,12 +1,9 @@
 <form>
-{{ volunteer }}
------------
-{{subscription}}
     <h1 ng-bind="volunteer.id"></h1>
     <div>
         <label>
             <span>email</span>
-            <input type="text" ng-blur="recover_subscription_id()" name="email" ng-model="volunteer.email" />
+            <input type="text" name="email" ng-model="volunteer.email" />
         </label>
     </div>
     <div>

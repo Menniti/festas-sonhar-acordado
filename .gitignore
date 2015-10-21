@@ -59,7 +59,6 @@ grandesfestas/settings/local.py
 grandesfestas/settings/production.py
 
 # collect static output directory
-grandesfestas/assets/
 grandesfestas/static/
 
 .DS_Store

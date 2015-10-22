@@ -2,13 +2,28 @@
     var app = angular.module('sonhar.controllers', []);
 
     app.controller('SubscriptionInfoCtrl', [
-        '$scope', '$location', '$timeout', 'Volunteer', 'Subscription', 'pipe',
-        function($scope, $location, $timeout, Volunteer, Subscription, pipe){
-            window.Volunteer = Volunteer;
+        '$scope', '$location', '$timeout', 'Volunteer', 'Subscription', 'pipe', 'cepcoder',
+        function($scope, $location, $timeout, Volunteer, Subscription, pipe, cepcoder){
+
+            function debounce_watch(callback, timeout) {
+                var timeout_id = null;
+                return function(before, now) {
+                    if(before !== now && now !== '') { 
+                        if(timeout_id) {
+                            $timeout.cancel(timeout_id);
+                        }
+                        timeout_id = $timeout(function(){
+                            callback(before, now);
+                        }, timeout);
+                    }
+                };
+            }
 
             $scope.volunteer = pipe.volunteer || new Volunteer();
-            $scope.subscription = pipe.subscription || new Subscription();
 
+            /**
+             * Find existing profile id
+             */
             function recover_id(){
                 var query = {'email': $scope.volunteer.email};
                 Volunteer.query(query, function(results){
@@ -16,32 +31,43 @@
                 });
             }
 
-            var recover_timeout_id = null;
-            $scope.$watch('volunteer.email', function debounced(before, now){
-                if(before === now || now === '') { return; }
+            $scope.$watch('volunteer.email', debounce_watch(recover_id, 500));
 
-                if(recover_timeout_id) {
-                    $timeout.cancel(recover_timeout_id);
-                }
+ 
+            /** 
+             * Find address
+             */
+            function populate_address_from_cep() {
+                cepcoder.code($scope.volunteer.cep).then(function(resp) {
+                    var data = resp.data;
+                    $scope.volunteer.address = data.logradouro || '';
+                    $scope.volunteer.city = data.localidade || '';
+                    $scope.volunteer.state = data.uf || '';
+                });
+            }
 
-                $timeout(recover_id, 500);
-            });
+            $scope.$watch('volunteer.cep', debounce_watch(populate_address_from_cep, 500));
 
             $scope.save = function() {
                 $scope.volunteer.save().then(function(){
                     pipe.volunteer = $scope.volunteer;
-                    pipe.subscription = $scope.subscription;
                     $location.path('/inscricao/treinamento');
                 });
             };
         }
     ]);
 
-    app.controller('SubscriptionTrainingCtrl', ['$scope', '$location', 'Training', 'pipe',
-        function($scope, $location, Training, pipe) {
-            var training_list = [];
-            $scope.training_list = training_list;
-            $scope.subscription = pipe.subscription;
+    app.controller('SubscriptionTrainingCtrl', ['$scope', '$location', 'Training', 'Subscription', 'pipe',
+        function($scope, $location, Training, Subscription, pipe) {
+            $scope.volunteer = pipe.volunteer;
+            $scope.subscription = new Subscription();
+
+            Subscription.query({'volunteer': $scope.volunteer.id}, function(res) {
+                console.log(res);
+                if(res.length > 0) {
+                    $scope.subscription = res[0];
+                }
+            });
 
             Training.query(function(list){
                 training_list = list;
@@ -49,16 +75,14 @@
             });
 
             $scope.save = function() {
-                var promise = $scope.subscription.id ? $scope.subscription.$update() : $scope.subscription.$save();
-
-                promise.then(function(){
+                $scope.subscription.save().then(function(){
                     $location.path('/inscricao/pagamento');
                 });
             };
         }
     ]);
 
-    app.controller('SubscriptionTrainingCtrl', ['$scope', '$location', 'Training', 'pipe',
+    app.controller('SubscriptionPaymentCtrl', ['$scope', '$location', 'Training', 'pipe',
         function($scope, $location, Training, pipe) {
             var training_list = [];
             $scope.training_list = training_list;

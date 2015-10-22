@@ -13,7 +13,7 @@
 
     app.config(function setup_routes($routeProvider) {
         $routeProvider.
-            when('/home', {
+            when('/', {
                 templateUrl: 'partials/home.html'
             }).
             when('/inscricao', {
@@ -29,7 +29,7 @@
                 controller: 'SubscriptionPaymentCtrl'
             }).
             otherwise({
-                redirectTo: '/home'
+                redirectTo: '/'
             });
 
     });

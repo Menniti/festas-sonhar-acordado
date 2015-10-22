@@ -3,6 +3,20 @@
         'ngResource'
     ]);
 
+    app.service('cepcoder', ['$q', '$http', function($q, $http){
+        this.code = function(cep) {
+            cep = (cep || '').replace(/[^\d]/g, '');
+
+            if(cep.match(/^\d{8,8}$/)){
+                return $http.get('http://cep.correiocontrol.com.br/'+cep+'.json');
+            }
+
+            var deferred = $q.defer();
+            deferred.reject('Formato inválido para cep');
+            return deferred.promise;
+        };
+    }]);
+
     app.factory('pipe', [
         function(){
             return {};
@@ -14,7 +28,6 @@
             var Entity = $resource(url, {'id': '@id'}, {'update': {'method': 'PUT'}});
 
             Entity.prototype.save = function() {
-                // DRF create with POST and update with PUT
                 return this.id ? this.$update() : this.$save();
             };
 
@@ -26,17 +39,5 @@
     app.factory('Volunteer', ['$resource', drf_resource_setup('/apiv1/volunteers/:id')]);
     app.factory('Training', ['$resource', drf_resource_setup('/apiv1/trainings/:id')]);
 
-    app.service('cepcoder', ['$q', '$http', function($q, $http){
-        this.code = function(cep) {
-            var deferred = $q.defer();
-            cep = (cep || '').replace(/[^\d]/g, '');
-
-            if(cep.match(/^\d{8,8}$/)){
-                return $http.get('http://cep.correiocontrol.com.br/'+cep+'.json');
-            }
-            deferred.reject('Formato inválido para cep');
-            return deferred.promise;
-        };
-    }]);
 
 })(angular);

@@ -9,5 +9,6 @@ router.register(r'volunteers', views.VolunteerViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^paymentform/(?P<subscription_id>[1-9]\d*)/?$', views.PaymentFormAPIView.as_view(), name='payment_form'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -5,10 +5,17 @@
         'sonhar.models'
     ]);
 
-    app.config(function setup_django_csrf($httpProvider, $resourceProvider) {
+    app.config(function setup($httpProvider, $resourceProvider, $sceDelegateProvider) {
+        //setup django
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
         $resourceProvider.defaults.stripTrailingSlashes = false;
+
+        $sceDelegateProvider.resourceUrlWhitelist([
+            /^https?:\/\/(www\.)?youtube\.com\/.*/,
+            /^https?:\/\/(www\.)?(sandbox\.)?paypal\.com\/.*/,
+            'self',
+        ]);
     });
 
     app.config(function setup_routes($routeProvider) {

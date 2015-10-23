@@ -76,21 +76,21 @@
 
             $scope.save = function() {
                 $scope.subscription.save().then(function(){
+                    pipe.subscription = $scope.subscription;
                     $location.path('/inscricao/pagamento');
                 });
             };
         }
     ]);
 
-    app.controller('SubscriptionPaymentCtrl', ['$scope', '$location', 'Training', 'pipe',
-        function($scope, $location, Training, pipe) {
-            var training_list = [];
-            $scope.training_list = training_list;
+    app.controller('SubscriptionPaymentCtrl', ['$scope', '$location', 'PaymentFormData', 'pipe',
+        function($scope, $location, PaymentFormData, pipe) {
+            window.PaymentFormData = PaymentFormData;
             $scope.subscription = pipe.subscription;
+            console.log($scope.subscription);
 
-            Training.query(function(list){
-                training_list = list;
-                $scope.training_list = training_list;
+            $scope.form_data = PaymentFormData.get({
+                'subscription_id': $scope.subscription.id
             });
 
             $scope.save = function() {
@@ -103,17 +103,4 @@
         }
     ]);
 
-    app.controller('SubscriptionPaymentCtrl', ['$scope', '$location', 'pipe',
-        function($scope, $location, pipe) {
-            $scope.subscription = pipe.subscription;
-
-            $scope.save = function() {
-                var promise = $scope.subscription.id ? $scope.subscription.$update() : $scope.subscription.$save();
-
-                promise.then(function(){
-                    $location.path('/inscricao/confirmar');
-                });
-            };
-        }
-    ]);
 })(angular);

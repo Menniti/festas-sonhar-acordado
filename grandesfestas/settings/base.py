@@ -1,5 +1,6 @@
 import sys
 from os.path import join, abspath, dirname
+from grandesfestas.apps.preferences.lazy_settings import LazyStringSetting, LazyBooleanSetting
 
 
 # PATH vars
@@ -35,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dynamic_preferences',
     'rest_framework',
+    'paypal.standard.ipn',
 )
 
 PROJECT_APPS = (
@@ -121,6 +123,8 @@ TEMPLATE_DIRS = (
     root('templates'),
 )
 
+PAYPAL_TEST = LazyBooleanSetting('payment__paypal_test')
+PAYPAL_RECEIVER_EMAIL = LazyStringSetting('payment__paypal_receiver_email')
 
 # .local.py overrides all the common settings.
 try:

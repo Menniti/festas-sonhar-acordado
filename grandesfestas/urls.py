@@ -11,4 +11,5 @@ urlpatterns = patterns(
     url(r'^/?$', TemplateView.as_view(template_name='base.html')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^apiv1/', include(apiv1.urls)),
+    url(r'^payment/paypal/', include('paypal.standard.ipn.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

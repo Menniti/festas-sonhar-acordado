@@ -39,5 +39,8 @@
     app.factory('Volunteer', ['$resource', drf_resource_setup('/apiv1/volunteers/:id')]);
     app.factory('Training', ['$resource', drf_resource_setup('/apiv1/trainings/:id')]);
 
+    app.factory('PaymentFormData', function($resource){
+        return $resource('/apiv1/paymentform/:subscription_id', {'subscription_id': '@subscription_id'});
+    });
 
 })(angular);

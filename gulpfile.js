@@ -10,7 +10,7 @@ gulp.task('vendor-js', function() {
         ])
        .pipe(concat('library.js'))
        .pipe(uglify())
-       .pipe(gulp.dest('grandesfestas/assets/vendor'));
+       .pipe(gulp.dest('webapp/vendor'));
 });
 
 gulp.task('vendor-css', function() {
@@ -18,7 +18,7 @@ gulp.task('vendor-css', function() {
         // colocar css aqui
         ])
        .pipe(concat('library.css'))
-       .pipe(gulp.dest('grandesfestas/assets/vendor'));
+       .pipe(gulp.dest('webapp/vendor'));
 });
 
 gulp.task('vendor', ['vendor-js', 'vendor-css']);

@@ -12,6 +12,7 @@ def root(*x):
     return join(abspath(PROJECT_ROOT), *x)
 
 PROJECT_ROOT = here("..")
+REPOSITORY_ROOT = dirname(root())
 
 sys.path.insert(0, root('apps'))
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = (
 )
 
 PROJECT_APPS = (
+    'staticcontent',
     'preferences',
     'volunteers',
     'trainings',

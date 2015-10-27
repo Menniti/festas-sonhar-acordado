@@ -5,3 +5,4 @@ djangorestframework==3.2.4
 django-dynamic-preferences==0.5.4
 django-filter==0.11.0
 django-paypal==0.2.7
+gunicorn==19.3.0

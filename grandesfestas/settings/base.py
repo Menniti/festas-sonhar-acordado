@@ -1,3 +1,4 @@
+import os
 import sys
 from os.path import join, abspath, dirname
 from grandesfestas.apps.preferences.lazy_settings import LazyStringSetting, LazyBooleanSetting
@@ -85,8 +86,8 @@ WSGI_APPLICATION = 'grandesfestas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'grandesfestas',
-        'USER': 'fabio',
+        'NAME': os.getenv('DB', 'grandesfestas'),
+        'USER': os.getenv('USER', 'fabio'),
         'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.

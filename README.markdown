@@ -33,7 +33,7 @@ source env/bin/activate
 Se estiver disponível o `virtualenvwrapper`, faça como abaixo.
 
 ```
-mkvirtualenv -p /usr/bin/python3 festa-sonhar-acordado
+mkvirtualenv -p /usr/bin/python3 festas-sonhar-acordado
 workon festa-sonhar-acordado
 ```
 

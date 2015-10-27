@@ -7,7 +7,7 @@ from dynamic_preferences.types import BasePreferenceType
 class FloatSerializer(BaseSerializer):
     @classmethod
     def clean_to_db_value(cls, value):
-        if not isinstance(value, float):
+        if type(value) not in (int, float,):
             raise cls.exception('FloatSerializer can only serialize float values')
         return value
 

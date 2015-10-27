@@ -1,3 +1,4 @@
+from os import listdir
 from os.path import join
 
 from django.conf import settings
@@ -18,7 +19,12 @@ urlpatterns = patterns(
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    urlpatterns += url(r'^(?P<path>.*)$', staticcontent.views.serve, kwargs={
-        'show_indexes': True,
-        'document_root': join(settings.REPOSITORY_ROOT, 'webapp')
-    }),
+    webapp_root = join(settings.REPOSITORY_ROOT, 'webapp')
+
+    urlpatterns += url(
+        r'^(?P<path>((%s).*)?)' % '|'.join(listdir(webapp_root)),
+        staticcontent.views.serve,
+        kwargs={
+            'show_indexes': True,
+            'document_root': webapp_root,
+        }),

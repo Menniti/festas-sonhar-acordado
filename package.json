@@ -4,7 +4,8 @@
   "description": "Sistema de inscrição para festa de natal do Sonhar Acordado",
   "scripts": {
     "start": "/usr/bin/env python manage.py runserver",
-    "test": "/usr/bin/env python manage.py test"
+    "test": "/usr/bin/env python manage.py test",
+    "postinstall": "./node_modules/bower/bin/bower install && ./node_modules/gulp/bin/gulp.js"
   },
   "author": "ONG Sonhar Acordado São Paulo",
   "dependencies": {

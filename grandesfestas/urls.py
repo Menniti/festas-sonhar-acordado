@@ -22,7 +22,7 @@ if settings.DEBUG:
     webapp_root = join(settings.REPOSITORY_ROOT, 'webapp')
 
     urlpatterns += url(
-        r'^(?P<path>((%s).*)?)' % '|'.join(listdir(webapp_root)),
+        r'^(?P<path>((%s).*)?)$' % '|'.join(listdir(webapp_root)),
         staticcontent.views.serve,
         kwargs={
             'show_indexes': True,

@@ -18,6 +18,7 @@ from apiv1.serializers import (SubscriptionSerializer,
                                VolunteerSerializer, )
 
 from apiv1.renderers import JSONRenderer
+from apiv1.permissions import AuthOrWriteOnly
 
 
 class TrainingViewSet(viewsets.ModelViewSet):
@@ -26,17 +27,19 @@ class TrainingViewSet(viewsets.ModelViewSet):
 
 
 class SubscriptionViewSet(viewsets.ModelViewSet):
-    queryset = Subscription.objects.all()
-    serializer_class = SubscriptionSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('volunteer',)
+    permission_classes = (AuthOrWriteOnly,)
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
 
 
 class VolunteerViewSet(viewsets.ModelViewSet):
-    queryset = Volunteer.objects.all()
-    serializer_class = VolunteerSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('email',)
+    permission_classes = [AuthOrWriteOnly, ]
+    queryset = Volunteer.objects.all()
+    serializer_class = VolunteerSerializer
 
 
 class PaymentFormAPIView(APIView):

@@ -39,7 +39,7 @@ class Training(BaseModel):
 
     def __str__(self):
         date = timezone.localtime(self.date)
-        return '%s, %s' % (self.local.name, date.strftime('%d/%m/%Y, %H:%M, %Z'))
+        return '%s, %s' % (self.local.name, date.strftime('%d/%m/%Y, %H:%M'))
 
     class Meta:
         verbose_name = _('Training')

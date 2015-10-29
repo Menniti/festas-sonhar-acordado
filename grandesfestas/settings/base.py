@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,6 +129,10 @@ TEMPLATE_DIRS = (
 
 PAYPAL_TEST = LazyBooleanSetting('payment__paypal_test')
 PAYPAL_RECEIVER_EMAIL = LazyStringSetting('payment__paypal_receiver_email')
+
+FORMAT_MODULE_PATH = [
+    'grandesfestas.formats',
+]
 
 # .local.py overrides all the common settings.
 try:

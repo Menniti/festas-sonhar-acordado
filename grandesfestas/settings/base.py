@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'paypal.standard.ipn',
     'import_export',
+    'rosetta',
 )
 
 PROJECT_APPS = (
@@ -134,6 +135,15 @@ PAYPAL_RECEIVER_EMAIL = LazyStringSetting('payment__paypal_receiver_email')
 FORMAT_MODULE_PATH = [
     'grandesfestas.formats',
 ]
+
+LOCALE_PATHS = (
+    root('locale'),
+)
+
+
+ROSETTA_MESSAGES_PER_PAGE = 100
+ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True
+ROSETTA_GOOGLE_TRANSLATE = True
 
 # .local.py overrides all the common settings.
 try:

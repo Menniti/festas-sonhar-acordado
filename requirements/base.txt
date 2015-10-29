@@ -8,3 +8,4 @@ django-paypal==0.2.7
 gunicorn==19.3.0
 django-suit==0.2.15
 django-import-export==0.2.8
+django-rosetta==0.7.6

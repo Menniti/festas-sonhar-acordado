@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'dynamic_preferences',
     'rest_framework',
     'paypal.standard.ipn',
+    'import_export',
 )
 
 PROJECT_APPS = (

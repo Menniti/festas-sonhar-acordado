@@ -25,6 +25,9 @@ class Volunteer(models.Model):
     state = models.CharField(_('State'), max_length=32)
     city = models.CharField(_('City'), max_length=32)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = _('Volunteer')
         verbose_name_plural = _('Volunteers')

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from volunteers.models import Volunteer
@@ -21,6 +22,11 @@ class Subscription(models.Model):
     payment = models.CharField(_('Payment'), choices=PAYMENT, max_length=16, blank=True)
     extra = models.PositiveSmallIntegerField(_('Extra value'), default=0)
     valid = models.BooleanField(_('Valid'), default=False)
+
+    def get_absolute_url(self):
+        if self.id:
+            return reverse('api:subscription-detail', args=[self.id])
+        return reverse('api:subscription-list')
 
     class Meta:
         verbose_name = _('Subscription')

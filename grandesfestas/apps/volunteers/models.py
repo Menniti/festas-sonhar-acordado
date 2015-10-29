@@ -4,6 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Volunteer(models.Model):
+    PROJECTS = (
+        ('aps1', _("Amigos para Sempre 1")),
+        ('aps2', _("Amigos para Sempre 2")),
+        ('aps3', _("Amigos para Sempre 3")),
+        ('aps4', _("Amigos para Sempre 4")),
+        ('aps5', _("Amigos para Sempre 5")),
+        ('sj', _("Sonhando Juntos")),
+        ('ppf', _("Preparando para o Futuro")),
+    )
+
     created_date = models.DateTimeField(_('Created date'), auto_now_add=True, editable=False)
     modified_date = models.DateTimeField(_('Modified date'), auto_now=True, editable=False)
 
@@ -24,6 +34,8 @@ class Volunteer(models.Model):
     complement = models.CharField(_('Complement'), max_length=32, blank=True)
     state = models.CharField(_('State'), max_length=32)
     city = models.CharField(_('City'), max_length=32)
+
+    payment = models.CharField(_('Project'), choices=PROJECTS, max_length=16, blank=True)
 
     def __str__(self):
         return self.name

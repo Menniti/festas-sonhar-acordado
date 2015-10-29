@@ -35,7 +35,7 @@ class Volunteer(models.Model):
     state = models.CharField(_('State'), max_length=32)
     city = models.CharField(_('City'), max_length=32)
 
-    payment = models.CharField(_('Project'), choices=PROJECTS, max_length=16, blank=True)
+    project = models.CharField(_('Project'), choices=PROJECTS, max_length=16, blank=True)
 
     def __str__(self):
         return self.name

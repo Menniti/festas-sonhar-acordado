@@ -34,6 +34,15 @@ class VolunteerSerializer(serializers.ModelSerializer):
         fields = ('id', 'email', 'name', 'rg', 'birthdate', 'phone', 'occupation',
                   'organization', 'cep', 'address', 'complement', 'state', 'city',)
 
+    @property
+    def data(self):
+        ret = super(self.__class__, self).data
+        has_id = ret.get('id', False)
+        request = self.context.get('request')
+        if request and has_id and not request.user.is_authenticated():
+            return {'id': ret.get('id')}
+        return ret
+
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     """ Outputs JSON representation of subscriptions.models.Subscription """
@@ -42,3 +51,12 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         model = Subscription
         fields = ('id', 'volunteer', 'training', 'present', 'paid',
                   'payment', 'extra', 'valid',)
+
+    @property
+    def data(self):
+        ret = super(self.__class__, self).data
+        has_id = ret.get('id', False)
+        request = self.context.get('request')
+        if request and has_id and not request.user.is_authenticated():
+            return {'id': ret.get('id')}
+        return ret

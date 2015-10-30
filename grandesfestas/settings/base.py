@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dynamic_preferences',
     'rest_framework',
+    'rest_framework.authtoken',
     'paypal.standard.ipn',
     'import_export',
     'rosetta',
@@ -145,6 +146,13 @@ ROSETTA_MESSAGES_PER_PAGE = 100
 ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True
 ROSETTA_GOOGLE_TRANSLATE = True
 ROSETTA_REQUIRES_AUTH = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 # .local.py overrides all the common settings.
 try:

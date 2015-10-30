@@ -87,8 +87,6 @@ através da API fornecida pelo django-restframework. Os endpoints configurados s
 * "inscrições": "http://localhost:8000/apiv1/subscriptions/",
 * "treinamentos": "http://localhost:8000/apiv1/trainings/",
 
-### Uso esperado da API
-
 ### Gerando um token de acesso
 
 Comando

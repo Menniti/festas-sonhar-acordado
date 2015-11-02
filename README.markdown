@@ -89,6 +89,9 @@ através da API fornecida pelo django-restframework. Os endpoints configurados s
 
 ### Gerando um token de acesso
 
+O Token de acesso permite acessar dados dos voluntário e de inscrições.
+Contudo, ainda sem o tokem é possível se inscrever.
+
 Comando
 ```
 $ curl --data "username=admin&password=admin" http://localhost:8000/apiv1/token-auth/

@@ -37,4 +37,8 @@ class TemplateEmailAdmin(admin.ModelAdmin):
 
 @admin.register(ScheduledEmail)
 class ScheduledEmailAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('template', 'date', 'sent', 'content_type', 'content_object')
+
+    def get_queryset(self, request):
+        qs = super(ScheduledEmailAdmin, self).get_queryset(request)
+        return qs.select_related('template')

@@ -5,9 +5,13 @@ from django.core.urlresolvers import reverse
 from django import forms
 from django.utils.html import format_html
 
+from import_export.admin import ImportExportModelAdmin
+
 from suit.widgets import AutosizedTextarea
 from suit_redactor.widgets import RedactorWidget
+
 from communication.models import ContactEmail, ScheduledEmail, TemplateEmail
+from communication import resources
 
 
 class TemplateEmailForm(forms.ModelForm):
@@ -23,8 +27,11 @@ class TemplateEmailForm(forms.ModelForm):
 
 
 @admin.register(ContactEmail)
-class ContactEmailAdmin(admin.ModelAdmin):
-    pass
+class ContactEmailAdmin(ImportExportModelAdmin):
+    list_display = ('email', 'name', 'subject', 'content',)
+    list_filter = ('created_date', 'modified_date',)
+    search_fields = ('email', 'name', 'subject', 'content',)
+    resource_class = resources.ContactEmailResource
 
 
 @admin.register(TemplateEmail)
@@ -38,6 +45,7 @@ class TemplateEmailAdmin(admin.ModelAdmin):
 @admin.register(ScheduledEmail)
 class ScheduledEmailAdmin(admin.ModelAdmin):
     list_display = ('template', 'date', 'sent', 'content_type', 'content_object')
+    list_filter = ('created_date', 'modified_date', 'content_type',)
 
     def get_queryset(self, request):
         qs = super(ScheduledEmailAdmin, self).get_queryset(request)

@@ -9,3 +9,5 @@ gunicorn==19.3.0
 django-suit==0.2.15
 django-import-export==0.2.8
 django-rosetta==0.7.6
+django-suit-redactor==0.0.2
+djrill==1.4.0

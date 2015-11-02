@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'paypal.standard.ipn',
     'import_export',
     'rosetta',
+    'suit_redactor',
 )
 
 PROJECT_APPS = (
@@ -51,6 +52,7 @@ PROJECT_APPS = (
     'volunteers',
     'trainings',
     'subscriptions',
+    'communication',
     'apiv1',
 )
 

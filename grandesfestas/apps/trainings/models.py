@@ -1,6 +1,9 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+
+from communication.models import ScheduledEmail
 
 
 class BaseModel(models.Model):
@@ -36,6 +39,7 @@ class Training(BaseModel):
     """ Represents a Training session """
     local = models.ForeignKey(TrainingLocal, verbose_name=_('Local'))
     date = models.DateTimeField(_('Date'), )
+    scheduled_email = GenericRelation(ScheduledEmail, related_query_name='training')
 
     def __str__(self):
         date = timezone.localtime(self.date)

@@ -1,4 +1,4 @@
-from dynamic_preferences.types import BooleanPreference, StringPreference
+from dynamic_preferences.types import BooleanPreference, StringPreference, IntegerPreference
 from dynamic_preferences import user_preferences_registry, global_preferences_registry
 
 from preferences.types import FloatPreference
@@ -83,6 +83,14 @@ class SubscriptionOpen(BooleanPreference):
     name = 'ticket_open'
     default = True
     verbose_name = 'Aberto para inscrições'
+
+
+@global_preferences_registry.register
+class TrainingNotificationOpen(IntegerPreference):
+    section = 'training'
+    name = 'notification_before'
+    default = 2
+    verbose_name = 'Notificar treinamento x dias antes'
 
 #
 #20150000332879

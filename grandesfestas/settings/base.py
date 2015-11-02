@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'import_export',
     'rosetta',
     'suit_redactor',
+    'django_extensions',
 )
 
 PROJECT_APPS = (

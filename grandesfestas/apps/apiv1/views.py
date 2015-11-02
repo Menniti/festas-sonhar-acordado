@@ -13,7 +13,9 @@ from dynamic_preferences import global_preferences_registry
 from trainings.models import Training
 from volunteers.models import Volunteer
 from subscriptions.models import Subscription
-from apiv1.serializers import (SubscriptionSerializer,
+from communication.models import ContactEmail
+from apiv1.serializers import (ContactEmailSerializer,
+                               SubscriptionSerializer,
                                TrainingSerializer,
                                VolunteerSerializer, )
 
@@ -71,3 +73,11 @@ class PaymentFormAPIView(APIView):
 
         response = Response(data)
         return response
+
+
+class ContactEmailViewSet(viewsets.ModelViewSet):
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('email',)
+    permission_classes = [AuthOrWriteOnly, ]
+    queryset = ContactEmail.objects.all()
+    serializer_class = ContactEmailSerializer

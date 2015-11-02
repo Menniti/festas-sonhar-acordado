@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 router.register(r'trainings', views.TrainingViewSet)
 router.register(r'subscriptions', views.SubscriptionViewSet)
 router.register(r'volunteers', views.VolunteerViewSet)
+router.register(r'contactemails', views.ContactEmailViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls, namespace="api")),

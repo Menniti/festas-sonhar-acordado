@@ -2,6 +2,7 @@
 from rest_framework import serializers
 from apiv1.fields import DateTimeTzAwareField
 
+from communication.models import ContactEmail
 from trainings.models import Training, TrainingLocal
 from volunteers.models import Volunteer
 from subscriptions.models import Subscription
@@ -60,3 +61,11 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         if request and has_id and not request.user.is_authenticated():
             return {'id': ret.get('id')}
         return ret
+
+
+class ContactEmailSerializer(serializers.ModelSerializer):
+    """ Outputs JSON representation of communication.models.ContactEmail """
+
+    class Meta:
+        model = ContactEmail
+        fields = ('email', 'name', 'subject', 'content',)

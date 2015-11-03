@@ -18,7 +18,10 @@
         ]);
     });
 
-    app.config(function setup_routes($routeProvider) {
+    app.config(function setup_routes($locationProvider, $routeProvider) {
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+
         $routeProvider.
             when('/', {
                 templateUrl: 'partials/home.html'

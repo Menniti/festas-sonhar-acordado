@@ -20,13 +20,14 @@ urlpatterns = patterns(
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
+    urlpatterns += url(r'^rosetta/', include('rosetta.urls')),
     webapp_root = join(settings.REPOSITORY_ROOT, 'webapp')
-
     urlpatterns += url(
-        r'^(?P<path>((%s).*)?)$' % '|'.join(listdir(webapp_root)),
+        r'^(?P<path>(?!admin|apiv1|payment|rosetta).*)$',
         staticcontent.views.serve,
         kwargs={
+            'fallback': 'index.html',
             'show_indexes': True,
             'document_root': webapp_root,
         }),
-    urlpatterns += url(r'^rosetta/', include('rosetta.urls')),
+

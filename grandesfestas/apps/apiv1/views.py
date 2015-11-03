@@ -35,6 +35,14 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
 
+    def create(self, request):
+        volunteer = request.data.get('volunteer')
+        instance = self.queryset.filter(volunteer=volunteer).first()
+        if instance and instance.id:
+            self.kwargs.update({'pk': instance.id})
+            return super(self.__class__, self).update(request, **self.kwargs)
+        return super(self.__class__, self).create(request)
+
 
 class VolunteerViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
@@ -42,6 +50,14 @@ class VolunteerViewSet(viewsets.ModelViewSet):
     permission_classes = [AuthOrWriteOnly, ]
     queryset = Volunteer.objects.all()
     serializer_class = VolunteerSerializer
+
+    def create(self, request):
+        email = request.data.get('email')
+        instance = self.queryset.filter(email=email).first()
+        if instance and instance.id:
+            self.kwargs.update({'pk': instance.id})
+            return super(self.__class__, self).update(request, **self.kwargs)
+        return super(self.__class__, self).create(request)
 
 
 class PaymentFormAPIView(APIView):

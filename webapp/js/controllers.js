@@ -62,6 +62,8 @@
             $scope.volunteer = pipe.volunteer;
             $scope.subscription = new Subscription();
 
+            $scope.subscription.volunteer = $scope.volunteer.id;
+
             Subscription.query({'volunteer': $scope.volunteer.id}, function(res) {
                 console.log(res);
                 if(res.length > 0) {

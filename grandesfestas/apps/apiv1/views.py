@@ -71,8 +71,6 @@ class PaymentFormAPIView(APIView):
         form = PayPalPaymentsForm(initial={
             'business':         preferences['payment__paypal_receiver_email'],
             'amount':           preferences['subscription__ticket_value'],
-            'cancel_return':    urljoin(preferences['general__site_url'], preferences['payment__cancel_explanation_path']),
-            'return':           urljoin(preferences['general__site_url'], preferences['payment__return_after_payment']),
             'custom':           preferences['payment__campaign'],
             'item_name':        preferences['payment__item_name'].format(volunteer.name),
             'notify_url':       urljoin(preferences['general__site_url'], reverse('paypal-ipn')),

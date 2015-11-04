@@ -73,11 +73,26 @@ class PaymentFormAPIView(APIView):
             'amount':           preferences['subscription__ticket_value'],
             'custom':           preferences['payment__campaign'],
             'item_name':        preferences['payment__item_name'].format(volunteer.name),
+            'item_number':      subscription_id,
             'notify_url':       urljoin(preferences['general__site_url'], reverse('paypal-ipn')),
             'invoice':          'Subscription(id=%s)' % subscription_id,
             'currency_code':    'BRL',
             'lc':               'BR',
             'no_shipping':      '1',
+            'address_override': '1',
+            'country':          'BR',
+
+            'first_name':      volunteer.first_name(),
+            'last_name':       volunteer.last_name(),
+            'address1':        volunteer.address,
+            'address2':        volunteer.complement,
+            'city':            volunteer.city,
+            'state':           volunteer.state,
+            'zip':             volunteer.cep,
+            'night_phone_a':   '',
+            'night_phone_b':   '',
+            'night_phone_c':   '',
+            'email':           volunteer.email,
         })
 
         data = dict([(f.name, f.value()) for f in form if f.value() is not None])

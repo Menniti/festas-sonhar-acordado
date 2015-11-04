@@ -40,6 +40,13 @@ class Volunteer(models.Model):
     def __str__(self):
         return self.name
 
+    def first_name(self):
+        return self.name.split(' ')[0]
+
+    def last_name(self):
+        parts = self.name.split(' ')
+        return ' '.join(parts[1:]) if len(parts) > 1 else ''
+
     class Meta:
         verbose_name = _('Volunteer')
         verbose_name_plural = _('Volunteers')

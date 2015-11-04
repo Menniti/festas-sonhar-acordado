@@ -1,25 +1,11 @@
 
-<table>
-    <tr ng-repeat="(name, value) in form_data">
-        <td>{{ name }}</td>
-        <td>{{ value }}</td>
-    </tr>
-</table>
-
-<form action="{{form_data.endpoint}}" method="post">
-    <br/><input name="invoice"       value="{{form_data.invoice}}" />
-    <br/><input name="custom"        value="{{form_data.custom}}" />
-    <br/><input name="return"        value="{{form_data.return}}" />
-    <br/><input name="cancel_return" value="{{form_data.cancel_return}}" />
-    <br/><input name="charset"       value="{{form_data.charset}}" />
-    <br/><input name="notify_url"    value="{{form_data.notify_url}}" />
-    <br/><input name="business"      value="{{form_data.business}}" />
-    <br/><input name="lc"            value="{{form_data.lc}}" />
-    <br/><input name="currency_code" value="{{form_data.currency_code}}" />
-    <br/><input name="amount"        value="{{form_data.amount}}" />
-    <br/><input name="cmd"           value="{{form_data.cmd}}" />
-    <br/><input name="no_shipping"   value="{{form_data.no_shipping}}" />
-    <br/><input name="item_name"     value="{{form_data.item_name}}" />
+<form action="{{form_data.endpoint}}" method="post" target="_fn_paypal">
+    <table>
+        <tr ng-repeat="(name, value) in form_data">
+            <td><input ng-model="name" /></td>
+            <td><input name="{{ name }}" ng-value="value" /></td>
+        </tr>
+    </table>
 
     <input name="submit" src="{{form_data.image_button}}" type="image"/>
 </form>

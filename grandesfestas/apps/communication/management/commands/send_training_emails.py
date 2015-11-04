@@ -20,8 +20,7 @@ class Command(BaseCommand):
     queryset = ScheduledEmail.objects\
         .select_related('template')\
         .filter(
-            training__date__gt=now(),
-            training__date__lt=target_date,
+            date__lte=now(),
             sent=None
         )
 

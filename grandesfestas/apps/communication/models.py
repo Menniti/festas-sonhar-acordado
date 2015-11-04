@@ -30,6 +30,7 @@ class TemplateEmail(BaseModel):
     html_content = models.TextField(_('HTML content'))
     subject = models.CharField(_('Subject'), max_length=128)
     sender = models.EmailField(_('From'), default=getattr(settings, 'DEFAULT_FROM_EMAIL', ''))
+    content_type = models.OneToOneField(ContentType)
 
     def __str__(self):
         return self.subject

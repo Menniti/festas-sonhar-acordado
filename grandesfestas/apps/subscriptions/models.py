@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 
 from volunteers.models import Volunteer
@@ -31,3 +33,17 @@ class Subscription(models.Model):
     class Meta:
         verbose_name = _('Subscription')
         verbose_name_plural = _('Subscriptions')
+
+
+class SubscriptionPayment(models.Model):
+    created_date = models.DateTimeField(_('Created date'), auto_now_add=True, editable=False)
+    modified_date = models.DateTimeField(_('Modified date'), auto_now=True, editable=False)
+
+    subscription = models.ForeignKey(Subscription)
+
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        unique_together = (('subscription', 'content_type', 'object_id'),)

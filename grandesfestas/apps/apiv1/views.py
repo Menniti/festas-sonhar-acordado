@@ -69,15 +69,14 @@ class PaymentFormAPIView(APIView):
         volunteer = subscription.volunteer
 
         form = PayPalPaymentsForm(initial={
-            'amount':           preferences['subscription__ticket_value'],
             'business':         preferences['payment__paypal_receiver_email'],
-            'cancel_return':    preferences['payment__cancel_explanation_path'],
-            'return':           preferences['payment__return_after_payment'],
+            'amount':           preferences['subscription__ticket_value'],
+            'cancel_return':    urljoin(preferences['general__site_url'], preferences['payment__cancel_explanation_path']),
+            'return':           urljoin(preferences['general__site_url'], preferences['payment__return_after_payment']),
             'custom':           preferences['payment__campaign'],
             'item_name':        preferences['payment__item_name'].format(volunteer.name),
             'notify_url':       urljoin(preferences['general__site_url'], reverse('paypal-ipn')),
             'invoice':          'Subscription(id=%s)' % subscription_id,
-            'charset':          'utf-8',
             'currency_code':    'BRL',
             'lc':               'BR',
             'no_shipping':      '1',

@@ -17,7 +17,7 @@ from communication import resources
 class TemplateEmailForm(forms.ModelForm):
     class Meta:
         model = TemplateEmail
-        fields = ('subject', 'sender', 'html_content', 'text_content',)
+        fields = ('subject', 'sender', 'html_content', 'text_content', 'content_type')
         widgets = {
             'html_content': RedactorWidget(
                 editor_options={'buttons': ['html', '|', 'formatting', '|', 'bold', 'italic']}

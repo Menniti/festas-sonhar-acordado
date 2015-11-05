@@ -7,7 +7,7 @@ from django.db import migrations, models
 def set_training_template_as_initial(apps, schema_editor):
     ContentType = apps.get_model("contenttypes", "ContentType")
     TemplateEmail = apps.get_model("communication", "TemplateEmail")
-    default = ContentType.objects.get(app_label='trainings', model='training')
+    default, new = ContentType.objects.get_or_create(app_label='trainings', model='training')
     TemplateEmail.objects.update(content_type=default)
 
 

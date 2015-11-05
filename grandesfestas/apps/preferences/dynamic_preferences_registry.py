@@ -92,3 +92,27 @@ class TrainingNotificationOpen(IntegerPreference):
     name = 'notification_before'
     default = 2
     verbose_name = 'Notificar treinamento x dias antes'
+
+
+@global_preferences_registry.register
+class MandrillApiKey(StringPreference):
+    section = 'mail'
+    name = 'mandrill_api_key'
+    default = ''
+    verbose_name = 'Chave do mandrill'
+
+
+@global_preferences_registry.register
+class DefaultFromEmail(StringPreference):
+    section = 'mail'
+    name = 'default_from_email'
+    default = 'voluntarios@sonharacodado.com.br'
+    verbose_name = 'Remetente padrão'
+
+
+@global_preferences_registry.register
+class DefaultToEmail(StringPreference):
+    section = 'mail'
+    name = 'default_to_email'
+    default = 'voluntarios@sonharacodado.com.br'
+    verbose_name = 'Destinatário padrão'

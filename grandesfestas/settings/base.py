@@ -136,6 +136,11 @@ TEMPLATE_DIRS = (
 PAYPAL_TEST = LazyBooleanSetting('payment__paypal_test')
 PAYPAL_RECEIVER_EMAIL = LazyStringSetting('payment__paypal_receiver_email')
 
+MANDRILL_API_KEY = LazyStringSetting('mail__mandrill_api_key')
+DEFAULT_FROM_EMAIL = LazyStringSetting('mail__default_from_email')
+DEFAULT_TO_EMAIL = LazyStringSetting('mail__default_to_email')
+
+
 FORMAT_MODULE_PATH = [
     'grandesfestas.formats',
 ]

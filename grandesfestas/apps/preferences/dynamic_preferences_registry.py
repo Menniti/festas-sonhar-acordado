@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from dynamic_preferences.types import BooleanPreference, StringPreference, IntegerPreference
 from dynamic_preferences import user_preferences_registry, global_preferences_registry
 
@@ -91,9 +92,3 @@ class TrainingNotificationOpen(IntegerPreference):
     name = 'notification_before'
     default = 2
     verbose_name = 'Notificar treinamento x dias antes'
-
-#
-#20150000332879
-#
-#1001629
-#

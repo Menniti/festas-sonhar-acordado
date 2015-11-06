@@ -24,6 +24,10 @@ class ContactEmail(BaseModel):
     subject = models.CharField(max_length=128)
     content = models.TextField()
 
+    class Meta:
+        verbose_name = _('Contact Email')
+        verbose_name_plural = _('Contact Emails')
+
 
 class TemplateEmail(BaseModel):
     text_content = models.TextField(_('Text content'))
@@ -31,6 +35,10 @@ class TemplateEmail(BaseModel):
     subject = models.CharField(_('Subject'), max_length=128)
     sender = models.EmailField(_('From'), default=getattr(settings, 'DEFAULT_FROM_EMAIL', ''))
     content_type = models.OneToOneField(ContentType)
+
+    class Meta:
+        verbose_name = _('Template Email')
+        verbose_name_plural = _('Templates Emails')
 
     def __str__(self):
         return self.subject
@@ -43,3 +51,7 @@ class ScheduledEmail(BaseModel):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        verbose_name = _('Scheduled Email')
+        verbose_name_plural = _('Scheduled Emails')

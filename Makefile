@@ -11,3 +11,6 @@ build:
 
 runserver:
 	${PYTHON} manage.py runserver 0.0.0.0:8000
+
+makemessages:
+	${PYTHON} manage.py makemessages -l pt_BR -e py -d django -i bower_components -i requirements.txt -i env

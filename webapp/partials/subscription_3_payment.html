@@ -1,11 +1,11 @@
-
-<form action="{{form_data.endpoint}}" method="post" target="_fn_paypal">
+{{form_data.endpoint}}
+<form accept-charset="ISO-8859-1" action="{{form_data.endpoint}}" method="post" target="_fn_paypal">
     <table>
-        <tr ng-repeat="(name, value) in form_data">
+        <tr ng-repeat="(name, value) in form_data.fields">
             <td><input ng-model="name" /></td>
             <td><input name="{{ name }}" ng-value="value" /></td>
         </tr>
     </table>
 
-    <input name="submit" src="{{form_data.image_button}}" type="image"/>
+    <input src="{{form_data.image_button}}" type="image"/>
 </form>

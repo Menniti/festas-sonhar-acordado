@@ -14,6 +14,8 @@
         $sceDelegateProvider.resourceUrlWhitelist([
             /^https?:\/\/(www\.)?youtube\.com\/.*/,
             /^https?:\/\/(www\.)?(sandbox\.)?paypal\.com\/.*/,
+            /^https?:\/\/(www\.)?bcash\.com\.br\/.*/,
+            /^https?:\/\/(\w+\.)+akamai\.net\/.*/,
             'self',
         ]);
     });

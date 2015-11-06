@@ -22,11 +22,11 @@ class SiteUrl(StringPreference):
 
 
 @global_preferences_registry.register
-class PaypalReceiverEmail(StringPreference):
+class PaymentReceiverEmail(StringPreference):
     section = 'payment'
-    name = 'paypal_receiver_email'
-    default = 'receiver@paypaltest.com'
-    verbose_name = 'Email do recebedor no PayPal'
+    name = 'receiver_email'
+    default = 'receiver@payment.com'
+    verbose_name = 'Email do recebedor do pagamento'
 
 
 @global_preferences_registry.register
@@ -68,6 +68,22 @@ class PaypalReturn(StringPreference):
     name = 'return_after_payment'
     default = '/obrigado'
     verbose_name = 'Caminho de retorno'
+
+
+@global_preferences_registry.register
+class BCashSecret(StringPreference):
+    section = 'payment'
+    name = 'bcash_secret'
+    default = ''
+    verbose_name = 'Chave secreta do BCash'
+
+
+@global_preferences_registry.register
+class BCashCodloja(StringPreference):
+    section = 'payment'
+    name = 'bcash_cod_loja'
+    default = ''
+    verbose_name = 'Código da loja do BCash'
 
 
 @global_preferences_registry.register

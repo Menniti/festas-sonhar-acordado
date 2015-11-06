@@ -12,7 +12,8 @@ router.register(r'contactemails', views.ContactEmailViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls, namespace="api")),
-    url(r'^paymentform/(?P<subscription_id>[1-9]\d*)/?$', views.PaymentFormAPIView.as_view(), name='payment_form'),
+    url(r'^paymentform/(bcash/)?(?P<subscription_id>[1-9]\d*)/?$', views.BcashFormAPIView.as_view(), name='bcash_form'),
+    url(r'^paymentform/paypal/(?P<subscription_id>[1-9]\d*)/?$', views.PaypalFormAPIView.as_view(), name='paypal_form'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^token-auth/', token_views.obtain_auth_token)
 ]

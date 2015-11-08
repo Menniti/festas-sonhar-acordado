@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'grandesfestas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DB_NAME', 'development'),
-        'USER': os.getenv('MYSQL_USER', 'fabio'),
+        'NAME': os.getenv('MYSQL_DB_NAME', 'grandesfestas'),
+        'USER': os.getenv('MYSQL_USER', 'root'),
         'PASSWORD': os.getenv('MYSQL_PASSWORD', ''),
         'HOST': os.getenv('MYSQL_HOST', ''),
         'PORT': os.getenv('MYSQL_PORT', ''),

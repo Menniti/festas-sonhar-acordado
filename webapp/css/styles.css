@@ -1,1 +1,100 @@
-/*! project specific CSS goes here. */
+/* Styles */
+
+.row {width: 98%; min-width: 100%;}
+
+body,html {min-height: 768px; width: 100%;}
+
+h1, h2, h3, label {font-family: 'amatic_scregular'; color: #fff;}
+
+label {color: #000 !important; font-size: 30px}
+
+body.home {background: url(../img/main-bg.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
+body.contato {background: url(../img/contato-fundo.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
+
+div.santa-home {position: absolute; z-index: 99; height: 100%; display: block; background: url(../img/logo-festa.png) no-repeat; background-size:contain;}
+
+div.main-menu {height: 60px; background: #fff;}
+div.main-menu ul {margin-left: 0;}
+div.main-menu li {list-style: none; }
+div.main-menu li a img {
+	-webkit-transition: all .25s ease-in-out;
+   -moz-transition: all .25s ease-in-out;
+    -ms-transition: all .25s ease-in-out;
+     -o-transition: all .25s ease-in-out;
+        transition: all .25s ease-in-out;
+}
+div.main-menu li a:hover img {border-top: solid 5px #fff000; margin-bottom: -5px;}
+
+div.main-menu .social img {height: 45px; padding: 15px 5px 3px;}
+
+div.home-content h1,
+div.home-content h2,
+div.home-content h3,
+div.home-content span,
+div.home-content p {text-align: center;}
+
+
+.diamond {
+	height: 400px;
+	width: 400px;
+	background: transparent;
+	color: #fff;
+	display: block;
+	overflow: hidden;
+	position: relative;
+	text-decoration: none;
+	/*border: 3px solid #fff;*/
+	top: -200px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.diamond p {
+	width: 250px;
+	height: 250px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	padding: 0 10px;
+	padding-top:275px;
+	display: table-cell;
+	vertical-align: middle;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	text-align: center;
+}
+
+.contato-titulo img {height: 350px;}
+
+.pasos {background: #FFE900; height: 275px; border-bottom: dotted; margin-bottom:50px;}
+
+body.inscricao {background: #E7E7E7}
+body.inscricao h1 {color: #009748;}
+
+form.multi-form fieldset {border: none; margin: 0; padding: 0;}
+form.multi-form fieldset .buttons img {height: 80px;}
+form.multi-form fieldset .buttons a:hover {background: none;}
+form.multi-form fieldset .buttons img:hover {height: 85px;}
+
+form.multi-form fieldset .buttons {margin-top: 20px;}
+
+form.multi-form input {border-radius: 10px}
+form.multi-form fieldset:not(.active) {
+  display: none;
+}
+form.multi-form fieldset.active:first-of-type ~ .buttons .prev,
+form.multi-form fieldset.active:first-of-type ~ .buttons .submit {
+  display: none;
+}
+form.multi-form fieldset.active:not(:last-of-type) ~ .buttons .submit {
+  display: none;
+}
+form.multi-form fieldset.active:last-of-type ~ .buttons .next {
+  display: none;
+}

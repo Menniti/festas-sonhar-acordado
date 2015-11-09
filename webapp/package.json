@@ -1,17 +1,21 @@
 {
-  "name": "festasonhar",
+  "name": "sonhar-webapp",
   "version": "1.0.0",
-  "description": "Sistema de inscrição para festa de natal do Sonhar Acordado",
-  "scripts": {
-    "start": "/usr/bin/env python manage.py runserver",
-    "test": "/usr/bin/env python manage.py test",
-    "postinstall": "./node_modules/bower/bin/bower install && ./node_modules/gulp/bin/gulp.js"
-  },
-  "author": "ONG Sonhar Acordado São Paulo",
+  "description": "festa de natal",
+  "main": "index.js",
   "dependencies": {
-    "bower": "^1.6.3",
-    "gulp": "^3.9.0",
+    "bower": "^1.6.5",
     "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^1.4.2"
-  }
+    "grunt": "^0.4.5",
+    "gulp-uglify": "^1.4.2",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }

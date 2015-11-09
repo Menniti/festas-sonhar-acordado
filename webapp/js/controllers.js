@@ -1,5 +1,18 @@
 (function(angular){
-    var app = angular.module('sonhar.controllers', []);
+    var app = angular.module('sonhar', []);
+
+    app.controller('ContactFormCtrl', [
+      '$scope', '$http', function($scope, $http) {
+        $scope.formData = {};
+        $scope.submit = function() {
+          $http.post('/apiv1/contactemails', $scope.formData).success(function(data, status) {
+            console.log(data);
+            console.log(status);
+            console.log('success');
+          });
+          }
+      }
+    ]);
 
     app.controller('SubscriptionInfoCtrl', [
         '$scope', '$location', '$timeout', 'Volunteer', 'Subscription', 'pipe', 'cepcoder',
@@ -8,7 +21,7 @@
             function debounce_watch(callback, timeout) {
                 var timeout_id = null;
                 return function(before, now) {
-                    if(before !== now && now !== '') { 
+                    if(before !== now && now !== '') {
                         if(timeout_id) {
                             $timeout.cancel(timeout_id);
                         }
@@ -33,8 +46,8 @@
 
             $scope.$watch('volunteer.email', debounce_watch(recover_id, 500));
 
- 
-            /** 
+
+            /**
              * Find address
              */
             function populate_address_from_cep() {

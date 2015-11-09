@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" ng-app>
+<html class="no-js" lang="pt-br" ng-app="sonhar">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="fonte/fonts.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <script src="ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
     <script src="vendor/library.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
   </head>
   <body class="contato">
-
-    Nothing here {{'yet' + '!'}}
 
     <div class="row main-menu">
       <ul class="large-12 columns">
@@ -44,34 +44,36 @@
         <img src="img/contato.png" alt="">
       </div>
       <div class="large-6 columns home-content">
-          <form>
+          <form name="contactForm" ng-submit="submit(contactForm.$valid)" ng-controller="ContactFormCtrl" novalidate>
             <div class="row">
               <div class="large-12 columns">
-                <label>NOMBRE COMPLETO</label>
-                <input type="text" placeholder="" />
+                <label>NOME COMPLETO</label>
+                <input type="text" placeholder="" name="name" ng-model="formData.name"/>
               </div>
             </div>
             <div class="row">
               <div class="large-6 columns">
                 <label>EMAIL</label>
-                <input type="text" placeholder="" />
+                <input type="text" placeholder="" name="email" ng-model="formData.email"/>
               </div>
               <div class="large-6 columns">
                 <label>TELEFONE</label>
-                <input type="text" placeholder="" />
+                <input type="text" placeholder="" name="telefone" ng-model="formData.telefone"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 columns">
                 <label>ASUNTO</label>
-                <input type="text" placeholder="" />
+                <input type="text" placeholder="" ng-model="formData.subject"/>
               </div>
             </div>
             <div class="row">
               <div class="large-12 columns">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <span>Mensagem</span>
+                <textarea name="" id="" cols="30" rows="10" ng-model="formData.content"></textarea>
               </div>
             </div>
+            <input type="submit" id="submit" value="Submit" />
           </form>
 
 

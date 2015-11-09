@@ -1,1 +1,1 @@
-angular.module('sonhar', ['ng-route'])
+angular.module('sonhar', ['ngRoute'])

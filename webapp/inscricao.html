@@ -20,36 +20,36 @@
         <li class="large-1 columns"><a href=""><img src="img/menu-contato.png" alt=""></a></li>
         <li class="large-1 columns"><a href=""><img src="img/menu-inscricao.png" alt=""></a></li>
         <li class="large-2 columns social">
-          <a href="#"><img src="img/facebook.png" alt=""></a> 
-          <a href="#"><img src="img/instagram.png" alt=""></a> 
+          <a href="#"><img src="img/facebook.png" alt=""></a>
+          <a href="#"><img src="img/instagram.png" alt=""></a>
           <a href="#"><img src="img/youtube.png" alt=""></a>
         </li>
       </ul>
     </div>
-    
-    
-      
+
+
+
       <div class="row">
-        <form class="multi-form" action="#" method="POST">
-          
+        <form name="signupForm" class="multi-form" action="#" ng-controller="SignupFormCtrl" novalidate>
+
           <fieldset class="active">
             <div class="pasos">
               <img src="img/inscricao-pasos-1.png" alt="">
             </div>
 
             <div class="large-10 columns large-centered">
-            
+
               <div class="row">
                 <div class="large-6 columns">
-                  <label for="">NOMBRE COMPLETO</label>
-                  <input type="text" placeholder="" />
+                  <label for="">NOME COMPLETO</label>
+                  <input type="text" placeholder="" name="name" ng-maxlength="80" required/>
                 </div>
                 <div class="large-6 columns">
                   <label for="">RG</label>
                   <input type="text" placeholder="" />
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="large-6 columns">
                   <label for="">DATA DE NASCIMENTO</label>
@@ -60,7 +60,7 @@
                   <input type="text" placeholder="" />
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="large-6 columns">
                   <label for="">PROFISSAO</label>
@@ -71,7 +71,7 @@
                   <input type="text" placeholder="" />
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="large-6 columns">
                   <label for="">E-MAIL</label>
@@ -82,7 +82,7 @@
                   <input type="text" placeholder="" />
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="large-6 columns">
                   <label for="">ENDERECO</label>
@@ -93,7 +93,7 @@
                   <input type="text" placeholder="" />
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="large-6 columns">
                   <label for="">ESTADO</label>
@@ -110,7 +110,7 @@
                 </div>
               </div>
             </div>
-            
+
           </fieldset>
 
           <fieldset>
@@ -130,7 +130,7 @@
               </div>
             </div>
           </fieldset>
-          
+
           <fieldset>
             <div class="large-12 columns pasos">
               <img src="img/inscricao-pasos-3.png" alt="">
@@ -158,15 +158,15 @@
                 </div>
               </div>
             </div>
-            
-          </fieldset>
-          
-          
 
-        </form>          
+          </fieldset>
+
+
+
+        </form>
 
       </div>
-    
+
 
 
 

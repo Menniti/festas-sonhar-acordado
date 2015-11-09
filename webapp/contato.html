@@ -48,13 +48,14 @@
             <div class="row">
               <div class="large-12 columns">
                 <label>NOME COMPLETO</label>
-                <input type="text" placeholder="" name="name" ng-model="formData.name"/>
+                <input type="text" placeholder="" name="name" ng-model="formData.name" ng-maxlength="80" required/>
+                <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine">Escreve o seu nome por favor.</p>
               </div>
             </div>
             <div class="row">
               <div class="large-6 columns">
                 <label>EMAIL</label>
-                <input type="text" placeholder="" name="email" ng-model="formData.email"/>
+                <input type="email" placeholder="" name="email" ng-model="formData.email" required/>
               </div>
               <div class="large-6 columns">
                 <label>TELEFONE</label>
@@ -70,10 +71,11 @@
             <div class="row">
               <div class="large-12 columns">
                 <span>Mensagem</span>
-                <textarea name="" id="" cols="30" rows="10" ng-model="formData.content"></textarea>
+                <textarea name="content" id="" cols="30" rows="10" ng-model="formData.content" ng-maxlength="499" required></textarea>
+                <p ng-show="contactForm.name.$invalid && !contactForm.message.$pristine">Precisa escrever uma mensagem.</p>
               </div>
             </div>
-            <input type="submit" id="submit" value="Submit" />
+            <button type="submit" id="submit" value="Submit" ng-disabled="contactForm.$invalid"/>
           </form>
 
 

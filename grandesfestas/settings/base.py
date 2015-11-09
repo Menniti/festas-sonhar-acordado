@@ -157,6 +157,9 @@ REST_FRAMEWORK = {
     )
 }
 
+DEFAULT_TO_EMAIL = 'qualquer@email.com'
+DEFAULT_FROM_EMAIL = 'qualquer@email.com'
+
 # .local.py overrides all the common settings.
 try:
     from .local import *

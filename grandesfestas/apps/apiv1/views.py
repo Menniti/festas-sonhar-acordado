@@ -2,8 +2,10 @@
 from urllib.parse import urljoin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
+from django.utils.timezone import now
 
 from rest_framework import filters, viewsets
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.views import APIView, Response
 
@@ -26,7 +28,9 @@ from bcash.forms import BcashForm
 
 
 class TrainingViewSet(viewsets.ModelViewSet):
-    queryset = Training.objects.select_related('local').all().order_by('date')
+    queryset = Training.objects.select_related('local')\
+                               .filter(date__gte=now())\
+                               .order_by('date')
     serializer_class = TrainingSerializer
 
 

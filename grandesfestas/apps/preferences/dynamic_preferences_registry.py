@@ -30,6 +30,14 @@ class PaymentReceiverEmail(StringPreference):
 
 
 @global_preferences_registry.register
+class PaypalReceiverEmail(StringPreference):
+    section = 'payment'
+    name = 'paypal_receiver_email'
+    default = 'receiver@payment.com'
+    verbose_name = 'Email do recebedor do paypal'
+
+
+@global_preferences_registry.register
 class PaypalTest(BooleanPreference):
     section = 'payment'
     name = 'paypal_test'

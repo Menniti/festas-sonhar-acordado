@@ -163,6 +163,11 @@ REST_FRAMEWORK = {
     )
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'test@localhost'
+DEFAULT_TO_EMAIL = 'test@localhost'
+
+
 # .local.py overrides all the common settings.
 try:
     from .local import *

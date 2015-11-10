@@ -7,11 +7,9 @@
         $scope.submit = function(isValid) {
           if (isValid) {
 
-            window.alert('our form is valid')
             $http.post('/apiv1/contactemails', $scope.formData).success(function(data, status) {
               console.log(data);
               console.log(status);
-              console.log('success');
             });
 
           }

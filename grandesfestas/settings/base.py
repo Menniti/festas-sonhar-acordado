@@ -55,6 +55,7 @@ PROJECT_APPS = (
     'trainings',
     'subscriptions',
     'communication',
+    'bcash',
     'apiv1',
 )
 

@@ -11,8 +11,8 @@ from trainings.models import Training
 
 class Subscription(models.Model):
     PAYMENT = (
-        ('Cash', _("cash")),
-        ('Eletronic', _("eletronic")),
+        ('cash', _("cash")),
+        ('eletronic', _("eletronic")),
     )
     created_date = models.DateTimeField(_('Created date'), auto_now_add=True, editable=False)
     modified_date = models.DateTimeField(_('Modified date'), auto_now=True, editable=False)

@@ -31,4 +31,3 @@ if settings.DEBUG:
             'show_indexes': True,
             'document_root': webapp_root,
         }),
-

@@ -4,5 +4,5 @@ from bcash import views
 
 urlpatterns = patterns(
     '',
-    url(r'^return_url/', views.BCashUpdateView, name='return_url'),
+    url(r'^return_url/', views.BCashUpdateView.as_view(), name='return_url'),
 )

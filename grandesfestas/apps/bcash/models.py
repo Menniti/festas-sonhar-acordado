@@ -3,14 +3,12 @@ import json
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+ST_WAITING = 0
+ST_APPROVED = 1
+ST_FAILED = 2
+
 
 class Transaction(models.Model):
-    STATUS = {
-        'WAITING': 0,
-        'APPROVED': 1,
-        'FAILED': 2,
-    }
-
     created_date = models.DateTimeField(_('created date'), auto_now_add=True, editable=False)
     modified_date = models.DateTimeField(_('modified date'), auto_now=True, editable=False)
     order_id = models.PositiveIntegerField(_('order id'), db_index=True)

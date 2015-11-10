@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from dynamic_preferences.types import BooleanPreference, StringPreference, IntegerPreference
 from dynamic_preferences import user_preferences_registry, global_preferences_registry
 
@@ -21,11 +22,19 @@ class SiteUrl(StringPreference):
 
 
 @global_preferences_registry.register
+class PaymentReceiverEmail(StringPreference):
+    section = 'payment'
+    name = 'receiver_email'
+    default = 'receiver@payment.com'
+    verbose_name = 'Email do recebedor do pagamento'
+
+
+@global_preferences_registry.register
 class PaypalReceiverEmail(StringPreference):
     section = 'payment'
     name = 'paypal_receiver_email'
-    default = 'receiver@paypaltest.com'
-    verbose_name = 'Email do recebedor no PayPal'
+    default = 'receiver@payment.com'
+    verbose_name = 'Email do recebedor do paypal'
 
 
 @global_preferences_registry.register
@@ -70,6 +79,22 @@ class PaypalReturn(StringPreference):
 
 
 @global_preferences_registry.register
+class BCashSecret(StringPreference):
+    section = 'payment'
+    name = 'bcash_secret'
+    default = ''
+    verbose_name = 'Chave secreta do BCash'
+
+
+@global_preferences_registry.register
+class BCashCodloja(StringPreference):
+    section = 'payment'
+    name = 'bcash_cod_loja'
+    default = ''
+    verbose_name = 'Código da loja do BCash'
+
+
+@global_preferences_registry.register
 class SubscriptionValue(FloatPreference):
     section = 'subscription'
     name = 'ticket_value'
@@ -92,8 +117,26 @@ class TrainingNotificationOpen(IntegerPreference):
     default = 2
     verbose_name = 'Notificar treinamento x dias antes'
 
-#
-#20150000332879
-#
-#1001629
-#
+
+@global_preferences_registry.register
+class MandrillApiKey(StringPreference):
+    section = 'mail'
+    name = 'mandrill_api_key'
+    default = ''
+    verbose_name = 'Chave do mandrill'
+
+
+@global_preferences_registry.register
+class DefaultFromEmail(StringPreference):
+    section = 'mail'
+    name = 'default_from_email'
+    default = 'voluntarios@sonharacodado.com.br'
+    verbose_name = 'Remetente padrão'
+
+
+@global_preferences_registry.register
+class DefaultToEmail(StringPreference):
+    section = 'mail'
+    name = 'default_to_email'
+    default = 'voluntarios@sonharacodado.com.br'
+    verbose_name = 'Destinatário padrão'

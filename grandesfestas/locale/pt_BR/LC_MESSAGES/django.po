@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-05 10:51-0200\n"
-"PO-Revision-Date: 2015-11-05 10:52-0200\n"
+"POT-Creation-Date: 2015-11-05 22:00-0200\n"
+"PO-Revision-Date: 2015-11-05 22:05-0200\n"
 "Last-Translator: b'  <a@b.cd>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 "Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.6\n"
+
+#: grandesfestas/apps/communication/apps.py:8
+#| msgid "Syndication"
+msgid "Communication"
+msgstr "Comunicação"
 
 #: grandesfestas/apps/communication/models.py:14
 #: grandesfestas/apps/subscriptions/models.py:17
@@ -35,30 +40,54 @@ msgstr "Data de criação"
 msgid "Modified date"
 msgstr "Data de modificação"
 
+#: grandesfestas/apps/communication/models.py:28
+msgid "Contact Email"
+msgstr "Email de contato"
+
 #: grandesfestas/apps/communication/models.py:29
+msgid "Contact Emails"
+msgstr "E-mails de contato"
+
+#: grandesfestas/apps/communication/models.py:33
 msgid "Text content"
 msgstr "Conteúdo texto"
 
-#: grandesfestas/apps/communication/models.py:30
+#: grandesfestas/apps/communication/models.py:34
 msgid "HTML content"
 msgstr "Conteúdo HTML"
 
-#: grandesfestas/apps/communication/models.py:31
+#: grandesfestas/apps/communication/models.py:35
 msgid "Subject"
 msgstr "Assunto"
 
-#: grandesfestas/apps/communication/models.py:32
+#: grandesfestas/apps/communication/models.py:36
 msgid "From"
 msgstr "De"
 
 #: grandesfestas/apps/communication/models.py:40
+msgid "Template Email"
+msgstr "Modelo de e-mail"
+
+#: grandesfestas/apps/communication/models.py:41
+msgid "Templates Emails"
+msgstr "Modelos de E-mails"
+
+#: grandesfestas/apps/communication/models.py:48
 #: grandesfestas/apps/trainings/models.py:41
 msgid "Date"
 msgstr "Data"
 
-#: grandesfestas/apps/communication/models.py:41
+#: grandesfestas/apps/communication/models.py:49
 msgid "Sent"
 msgstr "Enviado"
+
+#: grandesfestas/apps/communication/models.py:56
+msgid "Scheduled Email"
+msgstr "E-mail agendado"
+
+#: grandesfestas/apps/communication/models.py:57
+msgid "Scheduled Emails"
+msgstr "E-mails agendados"
 
 #: grandesfestas/apps/subscriptions/models.py:14
 msgid "cash"
@@ -219,9 +248,6 @@ msgstr "Projeto"
 #: grandesfestas/apps/volunteers/models.py:52
 msgid "Volunteers"
 msgstr "Voluntários"
-
-#~ msgid "Syndication"
-#~ msgstr "Organização"
 
 #~ msgid "Enter a valid value."
 #~ msgstr "Valor extra"

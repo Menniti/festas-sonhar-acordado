@@ -39,7 +39,7 @@ class LazyBooleanSetting(LazySetting):
         return self.__get_obj__()
 
 
-class LazyStringSetting(LazySetting):
+class LazyStringSetting(str, LazySetting):
 
     def __getattr__(self, attr):
         string = self.__get_obj__()
@@ -49,6 +49,9 @@ class LazyStringSetting(LazySetting):
 
     def to_json(self):
         return str(self.__get_obj__())
+
+    def __repr__(self):
+        return repr(self.__get_obj__())
 
     def __str__(self):
         return str(self.__get_obj__())

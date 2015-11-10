@@ -17,6 +17,7 @@ urlpatterns = patterns(
     url(r'^apiv1/', include(apiv1.urls)),
 
     url(r'^payment/paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^payment/bcash/', include('bcash.urls', namespace='bcash')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
@@ -30,4 +31,3 @@ if settings.DEBUG:
             'show_indexes': True,
             'document_root': webapp_root,
         }),
-

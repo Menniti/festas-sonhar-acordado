@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'rosetta',
     'suit_redactor',
     'django_extensions',
+    'djrill',
 )
 
 PROJECT_APPS = (
@@ -54,6 +55,7 @@ PROJECT_APPS = (
     'trainings',
     'subscriptions',
     'communication',
+    'bcash',
     'apiv1',
 )
 
@@ -136,6 +138,11 @@ TEMPLATE_DIRS = (
 PAYPAL_TEST = LazyBooleanSetting('payment__paypal_test')
 PAYPAL_RECEIVER_EMAIL = LazyStringSetting('payment__paypal_receiver_email')
 
+MANDRILL_API_KEY = LazyStringSetting('mail__mandrill_api_key')
+DEFAULT_FROM_EMAIL = LazyStringSetting('mail__default_from_email')
+DEFAULT_TO_EMAIL = LazyStringSetting('mail__default_to_email')
+
+
 FORMAT_MODULE_PATH = [
     'grandesfestas.formats',
 ]
@@ -157,8 +164,10 @@ REST_FRAMEWORK = {
     )
 }
 
-DEFAULT_TO_EMAIL = 'qualquer@email.com'
-DEFAULT_FROM_EMAIL = 'qualquer@email.com'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'test@localhost'
+DEFAULT_TO_EMAIL = 'test@localhost'
+
 
 # .local.py overrides all the common settings.
 try:

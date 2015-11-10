@@ -2,8 +2,10 @@
 from urllib.parse import urljoin
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
+from django.utils.timezone import now
 
 from rest_framework import filters, viewsets
+from rest_framework.decorators import detail_route, list_route
 from rest_framework.renderers import BrowsableAPIRenderer
 from rest_framework.views import APIView, Response
 
@@ -22,9 +24,13 @@ from apiv1.serializers import (ContactEmailSerializer,
 from apiv1.renderers import JSONRenderer
 from apiv1.permissions import AuthOrWriteOnly
 
+from bcash.forms import BcashForm
+
 
 class TrainingViewSet(viewsets.ModelViewSet):
-    queryset = Training.objects.select_related('local').all().order_by('date')
+    queryset = Training.objects.select_related('local')\
+                               .filter(date__gte=now())\
+                               .order_by('date')
     serializer_class = TrainingSerializer
 
 
@@ -60,7 +66,7 @@ class VolunteerViewSet(viewsets.ModelViewSet):
         return super(self.__class__, self).create(request)
 
 
-class PaymentFormAPIView(APIView):
+class PaypalFormAPIView(APIView):
     renderer_classes = (JSONRenderer, BrowsableAPIRenderer)
 
     def get(self, request, subscription_id):
@@ -69,7 +75,7 @@ class PaymentFormAPIView(APIView):
         volunteer = subscription.volunteer
 
         form = PayPalPaymentsForm(initial={
-            'business':         preferences['payment__paypal_receiver_email'],
+            'business':         preferences['payment__receiver_email'],
             'amount':           preferences['subscription__ticket_value'],
             'custom':           preferences['payment__campaign'],
             'item_name':        preferences['payment__item_name'].format(volunteer.name),
@@ -96,6 +102,40 @@ class PaymentFormAPIView(APIView):
         })
 
         data = dict([(f.name, f.value()) for f in form if f.value() is not None])
+        data['endpoint'] = form.get_endpoint()
+        data['image_button'] = form.get_image()
+
+        response = Response(data)
+        return response
+
+
+class BcashFormAPIView(APIView):
+    renderer_classes = (JSONRenderer, BrowsableAPIRenderer)
+
+    def get(self, request, subscription_id):
+        preferences = global_preferences_registry.manager()
+        subscription = get_object_or_404(Subscription, id=int(subscription_id))
+        volunteer = subscription.volunteer
+        secret = preferences['payment__bcash_secret']
+
+        form = BcashForm(secret=secret, initial={
+            'campanha':            preferences['payment__campaign'],
+            'cod_loja':            preferences['payment__bcash_cod_loja'],
+            'email_loja':          preferences['payment__receiver_email'],
+            'meio_pagamento':      10,
+            'parcela_maxima':      1,
+            'produto_codigo_1':    subscription_id,
+            'produto_descricao_1': preferences['payment__item_name'].format(volunteer.name),
+            'produto_qtde_1':      1,
+            'produto_valor_1':     preferences['subscription__ticket_value'],
+            'redirect':            'true',
+            'redirect_time':       '10',
+            'url_retorno':         urljoin(preferences['general__site_url'], reverse('bcash:return_url')),
+        })
+
+        data = {
+            'fields': form.to_json()
+        }
         data['endpoint'] = form.get_endpoint()
         data['image_button'] = form.get_image()
 

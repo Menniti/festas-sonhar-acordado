@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 import re
 from django.contrib.contenttypes.models import ContentType
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+
+from dynamic_preferences import global_preferences_registry
 from paypal.standard.ipn.signals import valid_ipn_received
 from paypal.standard.ipn.models import PayPalIPN
 from paypal.standard.models import ST_PP_COMPLETED
 from bcash.models import Transaction, ST_APPROVED
 from subscriptions.models import Subscription, SubscriptionPayment
+
+preferences = global_preferences_registry.manager()
 
 
 def detect_paypal_payment_and_mark_subscription(sender, **kwargs):
@@ -15,14 +19,16 @@ def detect_paypal_payment_and_mark_subscription(sender, **kwargs):
 
     if match:
         pk = int(match.group(1))
-        qs = Subscription.objects.filter(pk=pk)
+        subscription = Subscription.objects.filter(pk=pk).first()
 
-        if qs.exists():
+        if subscription:
             if sender.payment_status == ST_PP_COMPLETED:
-                qs.update(paid=sender.payment_gross, payment='eletronic')
+                subscription.paid = sender.payment_gross
+                subscription.payment = 'eletronic'
+                subscription.save()
 
             SubscriptionPayment.objects.create(
-                subscription_id=pk,
+                subscription=subscription,
                 content_object=sender
             )
 valid_ipn_received.connect(detect_paypal_payment_and_mark_subscription)
@@ -33,16 +39,26 @@ def detect_bcash_payment_and_mark_subscription(sender, instance, **kwargs):
     data = getattr(instance, 'json_data', {})
     pk = int(data.get('produto_codigo_1', 0))
     val = float(data.get('produto_valor_1', 0))
-    qs = Subscription.objects.filter(pk=pk)
+    subscription = Subscription.objects.filter(pk=pk).first()
 
-    if qs.exists():
+    if subscription:
         if instance.status_code == ST_APPROVED:
-            qs.update(paid=val, payment='eletronic')
+            subscription.paid = val
+            subscription.payment = 'eletronic'
+            subscription.save()
 
         content_type = ContentType.objects.get_for_model(instance)
 
         SubscriptionPayment.objects.get_or_create(
-            subscription_id=pk,
+            subscription=subscription,
             content_type=content_type,
             object_id=instance.id
         )
+
+
+@receiver(pre_save, sender=Subscription)
+def mark_is_subscription_is_valid(sender, instance, **kwargs):
+    ticket_value = preferences['subscription__ticket_value']
+
+    if instance.paid >= ticket_value and instance.present:
+        instance.valid = True

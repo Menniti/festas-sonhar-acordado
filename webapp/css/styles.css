@@ -12,6 +12,7 @@ body.home {background: url(../img/main-bg.png)center no-repeat; -webkit-backgrou
 body.contato {background: url(../img/contato-fundo.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
 body.festa {background: url(../img/festa-fundo.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
 body.ong {background: url(../img/ong-fundo.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
+body.duvidas {background: url(../img/duvidas-fundo.png)center no-repeat; -webkit-background-size:cover ; background-size: cover; }
 
 div.santa-home {position: absolute; z-index: 99; height: 100%; display: block; background: url(../img/logo-festa.png) no-repeat; background-size:contain;}
 
@@ -35,6 +36,14 @@ div.home-content h3,
 div.home-content span,
 div.home-content p {text-align: center;}
 
+div.home-content .row.bottom {
+	/*position: absolute;*/
+    width: 100%;
+    height: 100%;
+}
+
+div.home-content .row.bottom > div {margin-top: 120px;}
+div.home-content .row.middle {padding-top: 80px}
 
 .diamond {
 	height: 400px;
@@ -103,3 +112,9 @@ form.multi-form fieldset.active:last-of-type ~ .buttons .next {
 
 body.festa .contenido {margin-top: 50px;}
 .contenido-ong  {padding: 100px 0 0 100px;}
+
+.duvidas .duvidas-top .criancas {margin-left: 70px;}
+.duvidas .duvidas-top .pagamento {padding-right: 60px;}
+/*.duvidas .motivo {margin-left: 70px;}*/
+.duvidas .motivo img {margin-left: -60px; margin-top: -100px;}
+.duvidas .bottom { margin-top: 50px;}

@@ -63,6 +63,7 @@ INSTALLED_APPS += PROJECT_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -168,6 +169,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'test@localhost'
 DEFAULT_TO_EMAIL = 'test@localhost'
 
+CORS_ORIGIN_WHITELIST = (
+    'sonhar-acordado-sp.github.io',
+)
+
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^(https?://)?localhost(:\d+)?$',
+)
 
 # .local.py overrides all the common settings.
 try:

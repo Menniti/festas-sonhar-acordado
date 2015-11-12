@@ -68,6 +68,12 @@ def mark_is_subscription_is_valid(sender, instance, **kwargs):
         instance.valid = True
 
 
+@receiver(pre_save, sender=Subscription)
+def mark_special_volunteers_as_present(sender, instance, **kwargs):
+    if instance.volunteer.project:
+        instance.present = True
+
+
 @receiver(post_save, sender=Subscription)
 def draw_qrcode_for_subscription(sender, instance, **kwargs):
     if not instance.image:

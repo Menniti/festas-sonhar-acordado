@@ -51,11 +51,12 @@ class VolunteerSerializer(serializers.ModelSerializer):
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     """ Outputs JSON representation of subscriptions.models.Subscription """
+    special = serializers.SerializerMethodField()
 
     class Meta:
         model = Subscription
         fields = ('id', 'volunteer', 'training', 'present', 'paid',
-                  'payment', 'extra', 'valid',)
+                  'payment', 'extra', 'valid', 'special')
 
     @property
     def data(self):
@@ -63,11 +64,23 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
 
         if request.data and not request.user.is_authenticated():
+            public = {'id', 'special'}
             keys = list(ret.keys())
             for key in keys:
-                if key != 'id' and key not in request.data:
+                if key not in public and key not in request.data:
                     ret.pop(key)
         return ret
+
+    def get_special(self, obj):
+        return obj.volunteer.project != ''
+
+    def validate(self, validated_data):
+        stub = {'user': {'is_authenticated': lambda: False}}
+        if not self.context.get('request', stub).user.is_authenticated():
+            validated_data.pop('paid', None)
+            validated_data.pop('present', None)
+            validated_data.pop('valid', None)
+        return super(SubscriptionSerializer, self).validate(validated_data)
 
 
 class ContactEmailSerializer(serializers.ModelSerializer):

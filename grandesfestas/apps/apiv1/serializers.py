@@ -29,6 +29,7 @@ class TrainingSerializer(serializers.ModelSerializer):
 
 class VolunteerSerializer(serializers.ModelSerializer):
     """ Outputs JSON representation of volunteers.models.Volunteer """
+    birthdate = serializers.DateField(input_formats=["%d/%m/%Y"])
 
     class Meta:
         model = Volunteer

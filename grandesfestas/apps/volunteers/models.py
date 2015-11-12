@@ -5,13 +5,15 @@ from django.utils.translation import ugettext_lazy as _
 
 class Volunteer(models.Model):
     PROJECTS = (
-        ('aps1', _("Amigos para Sempre 1")),
-        ('aps2', _("Amigos para Sempre 2")),
-        ('aps3', _("Amigos para Sempre 3")),
-        ('aps4', _("Amigos para Sempre 4")),
-        ('aps5', _("Amigos para Sempre 5")),
-        ('sj', _("Sonhando Juntos")),
-        ('ppf', _("Preparando para o Futuro")),
+        ('aps1', "Amigos para Sempre 1"),
+        ('aps2', "Amigos para Sempre 2"),
+        ('aps3', "Amigos para Sempre 3"),
+        ('aps4', "Amigos para Sempre 4"),
+        ('aps5', "Amigos para Sempre 5"),
+        ('sj', "Sonhando Juntos"),
+        ('ppf1', "Preparando para o Futuro (Frei Tito)"),
+        ('ppf2', "Preparando para o Futuro (Caritas)"),
+        ('cs', "Contando Sonhos"),
     )
 
     created_date = models.DateTimeField(_('Created date'), auto_now_add=True, editable=False)

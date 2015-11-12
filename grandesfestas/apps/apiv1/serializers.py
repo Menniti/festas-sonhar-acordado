@@ -39,11 +39,12 @@ class VolunteerSerializer(serializers.ModelSerializer):
     def data(self):
         ret = super(self.__class__, self).data
         request = self.context.get('request')
+
         if request.data and not request.user.is_authenticated():
-            new_ret = dict([(k, ret.get(k)) for k in request.data.keys() if k in ret])
-            if 'id' in ret:
-                new_ret['id'] = ret.get('id')
-            return new_ret
+            keys = list(ret.keys())
+            for key in keys:
+                if key != 'id' and key not in request.data:
+                    ret.pop(key)
         return ret
 
 
@@ -59,11 +60,12 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     def data(self):
         ret = super(self.__class__, self).data
         request = self.context.get('request')
+
         if request.data and not request.user.is_authenticated():
-            new_ret = dict([(k, ret.get(k)) for k in request.data.keys() if k in ret])
-            if 'id' in ret:
-                new_ret['id'] = ret.get('id')
-            return new_ret
+            keys = list(ret.keys())
+            for key in keys:
+                if key != 'id' and key not in request.data:
+                    ret.pop(key)
         return ret
 
 

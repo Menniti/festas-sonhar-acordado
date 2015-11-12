@@ -58,9 +58,13 @@ def send_email_in_new_subscription(sender, instance, **kwargs):
     template, new = TemplateEmail.objects.get_or_create(content_type=content_type)
 
     contact = kwargs.get('instance')
+    context = {
+        'subscription': instance,
+        'site_url': preferences['general__site_url'],
+    }
 
-    html_content = django_engine.from_string(template.html_content).render({'subscription': instance})
-    text_content = django_engine.from_string(template.text_content).render({'subscription': instance})
+    html_content = django_engine.from_string(template.html_content).render(context)
+    text_content = django_engine.from_string(template.text_content).render(context)
 
     msg = EmailMultiAlternatives(
         template.subject,

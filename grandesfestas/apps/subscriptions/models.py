@@ -24,6 +24,7 @@ class Subscription(models.Model):
     payment = models.CharField(_('Payment'), choices=PAYMENT, max_length=16, blank=True)
     extra = models.PositiveSmallIntegerField(_('Extra value'), default=0)
     valid = models.BooleanField(_('Valid'), default=False)
+    image = models.ImageField(upload_to='subscription', blank=True)
 
     def get_absolute_url(self):
         if self.id:

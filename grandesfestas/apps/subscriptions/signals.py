@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 import re
+import io
+import qrcode
+
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+from django.template.defaultfilters import slugify
 
 from dynamic_preferences import global_preferences_registry
 from paypal.standard.ipn.signals import valid_ipn_received
@@ -62,3 +66,14 @@ def mark_is_subscription_is_valid(sender, instance, **kwargs):
 
     if instance.paid >= ticket_value and instance.present:
         instance.valid = True
+
+
+@receiver(post_save, sender=Subscription)
+def draw_qrcode_for_subscription(sender, instance, **kwargs):
+    if not instance.image:
+        name = 'qrcode%04d-%s.png' % (instance.id, slugify(instance.volunteer.name))
+        code = qrcode.make(str(instance.id))
+        buf = io.BytesIO()
+        code.save(buf)
+        buf.size = buf.tell()
+        instance.image.save(name, buf)

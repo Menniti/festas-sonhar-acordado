@@ -13,3 +13,5 @@ djrill==1.4.0
 goslate==1.5.0
 django-extensions==1.5.7
 django-cors-headers==1.1.0
+qrcode==5.1
+Pillow==3.0.0

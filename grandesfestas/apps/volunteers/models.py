@@ -14,6 +14,8 @@ class Volunteer(models.Model):
         ('ppf1', "Preparando para o Futuro (Frei Tito)"),
         ('ppf2', "Preparando para o Futuro (Caritas)"),
         ('cs', "Contando Sonhos"),
+        ('trainee', "Trainee"),
+        ('outros', "Outros"),
     )
 
     created_date = models.DateTimeField(_('Created date'), auto_now_add=True, editable=False)

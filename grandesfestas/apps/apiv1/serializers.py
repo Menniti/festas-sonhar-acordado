@@ -20,7 +20,7 @@ class TrainingLocalSerializer(serializers.ModelSerializer):
 class TrainingSerializer(serializers.ModelSerializer):
     """ Outputs JSON representation of trainings.models.Training """
     local = TrainingLocalSerializer(read_only=True)
-    date = DateTimeTzAwareField()
+    date = DateTimeTzAwareField(format="%d/%m/%Y, %H:%M")
 
     class Meta:
         model = Training

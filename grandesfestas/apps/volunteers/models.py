@@ -25,7 +25,7 @@ class Volunteer(models.Model):
     email = models.EmailField(_('Email'), unique=True)
     name = models.CharField(_('Name'), max_length=64)
     rg = models.CharField(_('Rg'), max_length=16)
-    birthdate = models.DateField(_('Birthdate'))
+    birthdate = models.DateField(_('Birthdate'), null=True)
     phone = models.CharField(_('Phone'), max_length=32)
 
     # about

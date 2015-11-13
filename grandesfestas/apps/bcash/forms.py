@@ -35,6 +35,7 @@ class BcashForm(forms.Form):
     produto_valor_1 = forms.CharField(widget=forms.HiddenInput)
     #redirect = forms.CharField(widget=forms.HiddenInput)
     #redirect_time = forms.CharField(widget=forms.HiddenInput, initial='10')
+    url_retorno = forms.CharField(widget=forms.HiddenInput)
 
     def to_json(self):
         items = []

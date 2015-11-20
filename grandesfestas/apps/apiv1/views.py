@@ -29,7 +29,7 @@ from bcash.forms import BcashForm
 
 class TrainingViewSet(viewsets.ModelViewSet):
     queryset = Training.objects.select_related('local')\
-                               .filter(date__gte=now())\
+                               .filter(date__gte=now(), hidden=False)\
                                .order_by('date')
     serializer_class = TrainingSerializer
 

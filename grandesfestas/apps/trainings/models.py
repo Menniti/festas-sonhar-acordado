@@ -39,6 +39,7 @@ class Training(BaseModel):
     """ Represents a Training session """
     local = models.ForeignKey(TrainingLocal, verbose_name=_('Local'))
     date = models.DateTimeField(_('Date'), )
+    hidden = models.BooleanField(_('Hidden'), default=False)
     scheduled_email = GenericRelation(ScheduledEmail, related_query_name='training')
 
     def __str__(self):

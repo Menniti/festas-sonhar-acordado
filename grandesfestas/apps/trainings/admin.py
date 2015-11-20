@@ -27,7 +27,8 @@ class TrainingLocalAdmin(admin.ModelAdmin):
 
 @admin.register(Training)
 class TrainingAdmin(admin.ModelAdmin):
-    list_display = ('local', 'date', 'subscriptions', 'cash')
+    list_display = ('local', 'date', 'hidden', 'subscriptions', 'cash')
+    list_editable = ('hidden',)
 
     def subscriptions(self, obj):
         return obj.subscription_set.count()

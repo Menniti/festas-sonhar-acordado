@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from urllib.parse import urlencode
 from django.contrib import admin
-from trainings.models import Training, TrainingLocal
+from django.core.urlresolvers import reverse
+from django.utils import numberformat
+from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from dynamic_preferences import global_preferences_registry
-from django.utils import numberformat
+from trainings.models import Training, TrainingLocal
 
 preferences = global_preferences_registry.manager()
 
@@ -31,7 +34,17 @@ class TrainingAdmin(admin.ModelAdmin):
     list_editable = ('hidden',)
 
     def subscriptions(self, obj):
-        return obj.subscription_set.count()
+        counter = obj.subscription_set.count()
+
+        if counter > 0:
+            query = {'training__id__exact': obj.id}
+            return format_html(
+                '<a href="{}?{}">{}</a>',
+                reverse('admin:subscriptions_subscription_changelist'),
+                urlencode(query),
+                counter
+            )
+        return counter
     subscriptions.short_description = _('Subscriptions')
 
     def cash(self, obj):

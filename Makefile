@@ -7,7 +7,6 @@ build:
 	${PYTHON} manage.py migrate
 	${PYTHON} manage.py compilemessages
 	@${PYTHON} manage.py collectstatic 2>&- || :
-	npm install
 
 runserver:
 	${PYTHON} manage.py runserver 0.0.0.0:8000

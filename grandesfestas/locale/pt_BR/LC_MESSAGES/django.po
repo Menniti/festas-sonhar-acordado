@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-05 22:00-0200\n"
-"PO-Revision-Date: 2015-11-05 22:05-0200\n"
-"Last-Translator: b'  <a@b.cd>'\n"
+"POT-Creation-Date: 2015-11-30 20:41-0200\n"
+"PO-Revision-Date: 2015-11-30 20:50-0200\n"
+"Last-Translator: b'  <fabio.montefuscolo@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,24 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.7.6\n"
 
+#: grandesfestas/apps/bcash/models.py:12
+#| msgid "Created date"
+msgid "created date"
+msgstr "Data de criação"
+
+#: grandesfestas/apps/bcash/models.py:13
+#| msgid "Modified date"
+msgid "modified date"
+msgstr "Data de modificação"
+
+#: grandesfestas/apps/bcash/models.py:14
+msgid "order id"
+msgstr "id da compra"
+
+#: grandesfestas/apps/bcash/models.py:15
+msgid "status"
+msgstr "situação"
+
+#: grandesfestas/apps/bcash/models.py:16
+msgid "status code"
+msgstr "código da situação"
+
+#: grandesfestas/apps/bcash/models.py:17
+#| msgid "Organization"
+msgid "transaction id"
+msgstr "Id da transação"
+
+#: grandesfestas/apps/bcash/models.py:18
+#| msgid "Created date"
+msgid "raw data"
+msgstr "Dado cru"
+
 #: grandesfestas/apps/communication/apps.py:8
-#| msgid "Syndication"
 msgid "Communication"
 msgstr "Comunicação"
 
 #: grandesfestas/apps/communication/models.py:14
 #: grandesfestas/apps/subscriptions/models.py:17
-#: grandesfestas/apps/subscriptions/models.py:39
+#: grandesfestas/apps/subscriptions/models.py:41
 #: grandesfestas/apps/trainings/models.py:12
-#: grandesfestas/apps/volunteers/models.py:17
+#: grandesfestas/apps/volunteers/models.py:21
 msgid "Created date"
 msgstr "Data de criação"
 
 #: grandesfestas/apps/communication/models.py:15
 #: grandesfestas/apps/subscriptions/models.py:18
-#: grandesfestas/apps/subscriptions/models.py:40
+#: grandesfestas/apps/subscriptions/models.py:42
 #: grandesfestas/apps/trainings/models.py:13
-#: grandesfestas/apps/volunteers/models.py:18
+#: grandesfestas/apps/volunteers/models.py:22
 msgid "Modified date"
 msgstr "Data de modificação"
 
@@ -90,6 +121,7 @@ msgid "Scheduled Emails"
 msgstr "E-mails agendados"
 
 #: grandesfestas/apps/subscriptions/models.py:14
+#: grandesfestas/apps/trainings/admin.py:55
 msgid "cash"
 msgstr "dinheiro"
 
@@ -98,12 +130,12 @@ msgid "eletronic"
 msgstr "eletrônico"
 
 #: grandesfestas/apps/subscriptions/models.py:20
-#: grandesfestas/apps/volunteers/models.py:51
+#: grandesfestas/apps/volunteers/models.py:55
 msgid "Volunteer"
 msgstr "Voluntário"
 
 #: grandesfestas/apps/subscriptions/models.py:21
-#: grandesfestas/apps/trainings/models.py:49
+#: grandesfestas/apps/trainings/models.py:50
 msgid "Training"
 msgstr "Treinamento"
 
@@ -116,52 +148,58 @@ msgid "Paid"
 msgstr "Pago"
 
 #: grandesfestas/apps/subscriptions/models.py:24
+#| msgid "Present in training"
+msgid "Present in party"
+msgstr "Presente na festa"
+
+#: grandesfestas/apps/subscriptions/models.py:25
 msgid "Payment"
 msgstr "Pagamento"
 
-#: grandesfestas/apps/subscriptions/models.py:25
+#: grandesfestas/apps/subscriptions/models.py:26
 msgid "Extra value"
 msgstr "Valor extra"
 
-#: grandesfestas/apps/subscriptions/models.py:26
+#: grandesfestas/apps/subscriptions/models.py:27
 msgid "Valid"
 msgstr "Válido"
 
-#: grandesfestas/apps/subscriptions/models.py:34
+#: grandesfestas/apps/subscriptions/models.py:36
 msgid "Subscription"
 msgstr "Inscrição"
 
-#: grandesfestas/apps/subscriptions/models.py:35
+#: grandesfestas/apps/subscriptions/models.py:37
+#: grandesfestas/apps/trainings/admin.py:48
 msgid "Subscriptions"
 msgstr "Inscrições"
 
 #: grandesfestas/apps/trainings/models.py:21
-#: grandesfestas/apps/volunteers/models.py:22
+#: grandesfestas/apps/volunteers/models.py:26
 msgid "Name"
 msgstr "Nome"
 
 #: grandesfestas/apps/trainings/models.py:22
-#: grandesfestas/apps/volunteers/models.py:32
+#: grandesfestas/apps/volunteers/models.py:36
 msgid "Cep"
 msgstr "CEP"
 
 #: grandesfestas/apps/trainings/models.py:23
-#: grandesfestas/apps/volunteers/models.py:33
+#: grandesfestas/apps/volunteers/models.py:37
 msgid "Address"
 msgstr "Endereço"
 
 #: grandesfestas/apps/trainings/models.py:24
-#: grandesfestas/apps/volunteers/models.py:34
+#: grandesfestas/apps/volunteers/models.py:38
 msgid "Complement"
 msgstr "Complemento"
 
 #: grandesfestas/apps/trainings/models.py:25
-#: grandesfestas/apps/volunteers/models.py:35
+#: grandesfestas/apps/volunteers/models.py:39
 msgid "State"
 msgstr "Estado"
 
 #: grandesfestas/apps/trainings/models.py:26
-#: grandesfestas/apps/volunteers/models.py:36
+#: grandesfestas/apps/volunteers/models.py:40
 msgid "City"
 msgstr "Cidade"
 
@@ -185,67 +223,43 @@ msgstr "Locais de treinamento"
 msgid "Local"
 msgstr "Local"
 
-#: grandesfestas/apps/trainings/models.py:50
+#: grandesfestas/apps/trainings/models.py:42
+msgid "Hidden"
+msgstr "Escondido"
+
+#: grandesfestas/apps/trainings/models.py:51
 msgid "Trainings"
 msgstr "Treinamentos"
 
-#: grandesfestas/apps/volunteers/models.py:8
-msgid "Amigos para Sempre 1"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:9
-msgid "Amigos para Sempre 2"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:10
-msgid "Amigos para Sempre 3"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:11
-msgid "Amigos para Sempre 4"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:12
-msgid "Amigos para Sempre 5"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:13
-msgid "Sonhando Juntos"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:14
-msgid "Preparando para o Futuro"
-msgstr ""
-
-#: grandesfestas/apps/volunteers/models.py:21
+#: grandesfestas/apps/volunteers/models.py:25
 msgid "Email"
 msgstr "Email"
 
-#: grandesfestas/apps/volunteers/models.py:23
+#: grandesfestas/apps/volunteers/models.py:27
 msgid "Rg"
 msgstr "Rg"
 
-#: grandesfestas/apps/volunteers/models.py:24
+#: grandesfestas/apps/volunteers/models.py:28
 msgid "Birthdate"
 msgstr "Data de nascimento"
 
-#: grandesfestas/apps/volunteers/models.py:25
+#: grandesfestas/apps/volunteers/models.py:29
 msgid "Phone"
 msgstr "Celular"
 
-#: grandesfestas/apps/volunteers/models.py:28
+#: grandesfestas/apps/volunteers/models.py:32
 msgid "Occupation"
 msgstr "Ocupação"
 
-#: grandesfestas/apps/volunteers/models.py:29
+#: grandesfestas/apps/volunteers/models.py:33
 msgid "Organization"
 msgstr "Organização"
 
-#: grandesfestas/apps/volunteers/models.py:38
+#: grandesfestas/apps/volunteers/models.py:42
 msgid "Project"
 msgstr "Projeto"
 
-#: grandesfestas/apps/volunteers/models.py:52
+#: grandesfestas/apps/volunteers/models.py:56
 msgid "Volunteers"
 msgstr "Voluntários"
 

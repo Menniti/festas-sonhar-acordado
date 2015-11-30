@@ -55,7 +55,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subscription
-        fields = ('id', 'volunteer', 'training', 'present', 'paid',
+        fields = ('id', 'volunteer', 'training', 'present', 'party', 'paid',
                   'payment', 'extra', 'valid', 'special')
 
     @property
@@ -79,6 +79,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         if not self.context.get('request', stub).user.is_authenticated():
             validated_data.pop('paid', None)
             validated_data.pop('present', None)
+            validated_data.pop('party', None)
             validated_data.pop('valid', None)
         return super(SubscriptionSerializer, self).validate(validated_data)
 

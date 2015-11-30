@@ -10,8 +10,8 @@ from subscriptions import resources
 
 @admin.register(Subscription)
 class SubscriptionAdmin(ExportMixin, admin.ModelAdmin):
-    list_display = ('volunteer', 'created_date', 'modified_date', 'training', 'present', 'paid', 'payment', 'valid', 'extra',)
-    list_editable = ('training', 'present', 'paid', 'payment', 'valid', 'extra')
-    list_filter = ('volunteer', 'created_date', 'modified_date', 'training', 'present', 'paid', 'payment', 'valid', 'extra',)
+    list_display = ('volunteer', 'created_date', 'modified_date', 'training', 'present', 'party', 'paid', 'payment', 'valid', 'extra',)
+    list_editable = ('training', 'present', 'party', 'paid', 'payment', 'valid', 'extra')
+    list_filter = ('volunteer', 'created_date', 'modified_date', 'training', 'present', 'party', 'paid', 'payment', 'valid', 'extra',)
     search_fields = ('volunteer__name', 'volunteer__email')
     resource_class = resources.SubscriptionResource

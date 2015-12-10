@@ -21,7 +21,7 @@ class Subscription(models.Model):
     training = models.ForeignKey(Training, verbose_name=_('Training'), null=True, blank=True)
     present = models.BooleanField(_('Present in training'), default=False)
     paid = models.FloatField(_('Paid'), default=0)
-    party = models.BooleanField(_('Present in party'), default=False)
+    bracelet = models.CharField(_('Bracelet Code'), max_length=64, blank=True)
     payment = models.CharField(_('Payment'), choices=PAYMENT, max_length=16, blank=True)
     extra = models.PositiveSmallIntegerField(_('Extra value'), default=0)
     valid = models.BooleanField(_('Valid'), default=False)

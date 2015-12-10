@@ -152,6 +152,11 @@ msgstr "Pago"
 msgid "Present in party"
 msgstr "Presente na festa"
 
+#: grandesfestas/apps/subscriptions/models.py:24
+#| msgid "Bracelet Code"
+msgid "Bracelet Code"
+msgstr "Código da pulseira"
+
 #: grandesfestas/apps/subscriptions/models.py:25
 msgid "Payment"
 msgstr "Pagamento"
